@@ -20,6 +20,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
     'score',
     'findings',
     'suspicious_regions',
+    'forensic_details',
     'heatmap_path',
     'engine_error',
     'scanned_at',
@@ -39,6 +40,7 @@ class Verification extends Model
         return [
             'findings' => 'array',
             'suspicious_regions' => 'array',
+            'forensic_details' => 'array',
             'scanned_at' => 'datetime',
         ];
     }

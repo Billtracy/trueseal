@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Verification;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use RuntimeException;
 use Symfony\Component\Process\Process;
@@ -35,11 +36,14 @@ class ForensicAnalysisService
             $verification->original_filename,
         ]);
 
-        $process->setTimeout(60);
+        // Tighter timeout for demo responsiveness — engine should finish within 30s
+        $process->setTimeout(30);
         $process->run();
 
         if (! $process->isSuccessful()) {
-            throw new RuntimeException(trim($process->getErrorOutput()) ?: 'Forensic engine failed.');
+            $stderr = trim($process->getErrorOutput());
+            Log::warning('Forensic engine stderr', ['stderr' => $stderr]);
+            throw new RuntimeException($stderr ?: 'Forensic engine failed.');
         }
 
         $result = json_decode($process->getOutput(), true);
@@ -66,11 +70,17 @@ class ForensicAnalysisService
                 'score' => (int) data_get($result, 'score', 0),
                 'findings' => data_get($result, 'findings', []),
                 'suspicious_regions' => data_get($result, 'suspicious_regions', []),
+                'forensic_details' => $this->buildForensicDetails($result),
                 'heatmap_path' => $heatmapPath,
                 'engine_error' => null,
                 'scanned_at' => now(),
             ]);
         } catch (Throwable $exception) {
+            Log::error('Forensic scan failed', [
+                'verification_id' => $verification->id,
+                'error' => $exception->getMessage(),
+            ]);
+
             $verification->update([
                 'status' => Verification::STATUS_ERROR,
                 'verdict' => 'ERROR',
@@ -80,6 +90,28 @@ class ForensicAnalysisService
         }
 
         return $verification->refresh();
+    }
+
+    /**
+     * Extract the enriched forensic details envelope from the v3 engine output.
+     */
+    private function buildForensicDetails(array $result): array
+    {
+        return [
+            'engine_version' => data_get($result, 'engine_version', 'unknown'),
+            'analysis_duration_ms' => data_get($result, 'analysis_duration_ms', 0),
+            'confidence_level' => data_get($result, 'confidence_level', 'LOW'),
+            'layer_scores' => [
+                'ela' => (int) data_get($result, 'ela_score', 0),
+                'ocr' => (int) data_get($result, 'ocr_score', 0),
+                'noise' => (int) data_get($result, 'noise_score', 0),
+                'edge' => (int) data_get($result, 'edge_score', 0),
+            ],
+            'ela' => data_get($result, 'forensic_details.ela', []),
+            'noise' => data_get($result, 'forensic_details.noise', []),
+            'edge' => data_get($result, 'forensic_details.edge', []),
+            'layer_errors' => data_get($result, 'layer_errors', []),
+        ];
     }
 
     private function relativeLocalPath(string $absolutePath): string
