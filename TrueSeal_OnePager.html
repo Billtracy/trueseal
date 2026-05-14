@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TrueSeal — One-Pager</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  /* ── Reset & Page Setup ──────────────────────────────────────── */
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  html, body {
+    width: 210mm;
+    height: 297mm;
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: #06090f;
+    color: #c8d2e0;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  body {
+    overflow: hidden;
+  }
+
+  /* ── Page Container ──────────────────────────────────────────── */
+  .page {
+    width: 210mm;
+    height: 297mm;
+    padding: 10mm 14mm 8mm 14mm;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: relative;
+    background:
+      radial-gradient(ellipse 60% 40% at 15% 8%, rgba(52, 211, 153, 0.08) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 35% at 85% 92%, rgba(6, 182, 212, 0.06) 0%, transparent 70%),
+      #06090f;
+  }
+
+  /* ── Header ──────────────────────────────────────────────────── */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-bottom: 6px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    margin-bottom: 7px;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .logo-mark {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #34d399, #06b6d4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 900;
+    color: #06090f;
+    letter-spacing: -0.5px;
+    flex-shrink: 0;
+  }
+
+  .brand-text h1 {
+    font-size: 20px;
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: -0.3px;
+    line-height: 1;
+  }
+
+  .brand-text .tagline {
+    font-size: 7.5px;
+    font-weight: 600;
+    color: #34d399;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    margin-top: 3px;
+  }
+
+  .badge-row {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    margin-top: 4px;
+  }
+
+  .badge {
+    font-size: 7px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.04);
+    color: #94a3b8;
+  }
+
+  .badge.accent {
+    background: rgba(52, 211, 153, 0.1);
+    border-color: rgba(52, 211, 153, 0.25);
+    color: #34d399;
+  }
+
+  /* ── Main Grid ───────────────────────────────────────────────── */
+  .main-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 7px;
+    flex: 1;
+  }
+
+  /* ── Card Style ──────────────────────────────────────────────── */
+  .card {
+    background: rgba(255,255,255,0.025);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 10px;
+    padding: 9px 12px;
+  }
+
+  .card-title {
+    font-size: 8px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #34d399;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .card-title .icon {
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 9px;
+    flex-shrink: 0;
+  }
+
+  /* ── Problem Card (Full Width) ───────────────────────────────── */
+  .problem-row {
+    grid-column: 1 / -1;
+  }
+
+  .problem-row .problem-content {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 16px;
+    align-items: start;
+  }
+
+  .problem-text {
+    font-size: 9.5px;
+    line-height: 1.5;
+    color: #b0bdd0;
+  }
+
+  .problem-text strong {
+    color: #f87171;
+    font-weight: 700;
+  }
+
+  .stat-cluster {
+    display: flex;
+    gap: 8px;
+  }
+
+  .stat-box {
+    text-align: center;
+    padding: 6px 8px;
+    background: rgba(248, 113, 113, 0.06);
+    border: 1px solid rgba(248, 113, 113, 0.15);
+    border-radius: 8px;
+    min-width: 68px;
+  }
+
+  .stat-box .num {
+    font-size: 16px;
+    font-weight: 900;
+    color: #f87171;
+    line-height: 1;
+  }
+
+  .stat-box .label {
+    font-size: 6.5px;
+    color: #94a3b8;
+    margin-top: 3px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    line-height: 1.3;
+  }
+
+  /* ── Solution Card ───────────────────────────────────────────── */
+  .flow-steps {
+    display: flex;
+    gap: 0;
+    align-items: stretch;
+  }
+
+  .flow-step {
+    flex: 1;
+    text-align: center;
+    padding: 6px 4px;
+    position: relative;
+  }
+
+  .flow-step::after {
+    content: '→';
+    position: absolute;
+    right: -4px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 11px;
+    color: rgba(52, 211, 153, 0.4);
+    font-weight: 700;
+  }
+
+  .flow-step:last-child::after {
+    display: none;
+  }
+
+  .step-num {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #34d399, #06b6d4);
+    color: #06090f;
+    font-size: 10px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 5px;
+  }
+
+  .step-title {
+    font-size: 8px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 2px;
+  }
+
+  .step-desc {
+    font-size: 7px;
+    color: #7c8ba5;
+    line-height: 1.4;
+  }
+
+  /* ── AI Engine Card ──────────────────────────────────────────── */
+  .layers {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .layer {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+    padding: 6px 9px;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 7px;
+  }
+
+  .layer-badge {
+    flex-shrink: 0;
+    font-size: 6.5px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 3px 6px;
+    border-radius: 4px;
+    margin-top: 1px;
+  }
+
+  .layer-badge.visual {
+    background: rgba(248, 113, 113, 0.12);
+    color: #f87171;
+    border: 1px solid rgba(248, 113, 113, 0.2);
+  }
+
+  .layer-badge.textual {
+    background: rgba(96, 165, 250, 0.12);
+    color: #60a5fa;
+    border: 1px solid rgba(96, 165, 250, 0.2);
+  }
+
+  .layer-info {
+    flex: 1;
+  }
+
+  .layer-info .title {
+    font-size: 8.5px;
+    font-weight: 700;
+    color: #e2e8f0;
+    margin-bottom: 2px;
+  }
+
+  .layer-info .desc {
+    font-size: 7.5px;
+    color: #7c8ba5;
+    line-height: 1.5;
+  }
+
+  .scoring-bar {
+    margin-top: 5px;
+    padding: 5px 9px;
+    background: linear-gradient(135deg, rgba(52, 211, 153, 0.06), rgba(6, 182, 212, 0.06));
+    border: 1px solid rgba(52, 211, 153, 0.15);
+    border-radius: 7px;
+    font-size: 7.5px;
+    color: #94a3b8;
+    line-height: 1.55;
+  }
+
+  .scoring-bar strong {
+    color: #34d399;
+  }
+
+  /* ── Squad API Card ──────────────────────────────────────────── */
+  .api-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+
+  .api-item {
+    padding: 6px 8px;
+    background: rgba(139, 92, 246, 0.04);
+    border: 1px solid rgba(139, 92, 246, 0.12);
+    border-radius: 7px;
+  }
+
+  .api-item .name {
+    font-size: 8px;
+    font-weight: 700;
+    color: #c4b5fd;
+    margin-bottom: 2px;
+  }
+
+  .api-item .purpose {
+    font-size: 7px;
+    color: #7c8ba5;
+    line-height: 1.45;
+  }
+
+  .api-item .endpoint {
+    font-size: 6px;
+    font-family: 'JetBrains Mono', monospace;
+    color: #64748b;
+    margin-top: 2px;
+  }
+
+  /* ── Financial Flow (Full Width) ─────────────────────────────── */
+  .finance-row {
+    grid-column: 1 / -1;
+  }
+
+  .finance-flow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    padding: 4px 0;
+  }
+
+  .finance-node {
+    text-align: center;
+    padding: 6px 12px;
+    border-radius: 8px;
+    min-width: 100px;
+  }
+
+  .finance-node.payment {
+    background: rgba(139, 92, 246, 0.08);
+    border: 1px solid rgba(139, 92, 246, 0.2);
+  }
+
+  .finance-node.platform {
+    background: rgba(52, 211, 153, 0.08);
+    border: 1px solid rgba(52, 211, 153, 0.2);
+  }
+
+  .finance-node.university {
+    background: rgba(6, 182, 212, 0.08);
+    border: 1px solid rgba(6, 182, 212, 0.2);
+  }
+
+  .finance-node .amount {
+    font-size: 14px;
+    font-weight: 900;
+    line-height: 1;
+  }
+
+  .finance-node.payment .amount { color: #c4b5fd; }
+  .finance-node.platform .amount { color: #34d399; }
+  .finance-node.university .amount { color: #22d3ee; }
+
+  .finance-node .desc {
+    font-size: 6.5px;
+    color: #64748b;
+    margin-top: 3px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+  }
+
+  .finance-arrow {
+    font-size: 14px;
+    color: rgba(255,255,255,0.15);
+    padding: 0 8px;
+    font-weight: 300;
+  }
+
+  /* ── Four Pillars (Full Width) ───────────────────────────────── */
+  .pillars-row {
+    grid-column: 1 / -1;
+  }
+
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+  }
+
+  .pillar {
+    text-align: center;
+    padding: 6px 6px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.06);
+    background: rgba(255,255,255,0.02);
+  }
+
+  .pillar .pillar-icon {
+    font-size: 14px;
+    margin-bottom: 2px;
+  }
+
+  .pillar .pillar-name {
+    font-size: 7.5px;
+    font-weight: 700;
+    color: #e2e8f0;
+    margin-bottom: 3px;
+  }
+
+  .pillar .pillar-desc {
+    font-size: 6.5px;
+    color: #7c8ba5;
+    line-height: 1.5;
+  }
+
+  /* ── Footer ──────────────────────────────────────────────────── */
+  .footer {
+    margin-top: auto;
+    padding-top: 6px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-left {
+    font-size: 7px;
+    color: #475569;
+    line-height: 1.5;
+  }
+
+  .footer-left strong {
+    color: #64748b;
+  }
+
+  .footer-right {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+  }
+
+  .tech-tag {
+    font-size: 6.5px;
+    font-weight: 600;
+    padding: 2px 7px;
+    border-radius: 3px;
+    border: 1px solid rgba(255,255,255,0.08);
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* ── Print overrides ─────────────────────────────────────────── */
+  @media print {
+    html, body {
+      width: 210mm;
+      height: 297mm;
+    }
+    .page {
+      page-break-after: avoid;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ── Header ───────────────────────────────────────────── -->
+  <header class="header">
+    <div class="brand">
+      <div class="logo-mark">TS</div>
+      <div class="brand-text">
+        <h1>TrueSeal</h1>
+        <div class="tagline">Forensic Certificate Verification</div>
+      </div>
+    </div>
+    <div class="badge-row">
+      <span class="badge accent">Squad Hackathon 3.0</span>
+      <span class="badge">Challenge 01 · Proof of Life</span>
+    </div>
+  </header>
+
+  <!-- ── Main Content Grid ────────────────────────────────── -->
+  <div class="main-grid">
+
+    <!-- Problem (Full Width) -->
+    <div class="card problem-row">
+      <div class="card-title">
+        <span class="icon" style="background: rgba(248,113,113,0.12);">⚠</span>
+        The Problem
+      </div>
+      <div class="problem-content">
+        <div class="problem-text">
+          Certificate fraud is a <strong>systemic crisis</strong> across Nigeria. Employers rely on slow, manual verification 
+          that takes <strong>2–4 weeks</strong> and costs up to ₦50,000 per check. Forged academic credentials pass 
+          undetected because current methods cannot detect pixel-level digital manipulation — altered names, 
+          spliced dates, and fabricated grades. Meanwhile, issuing universities have <strong>zero visibility</strong> into 
+          how their credentials are used and earn nothing from third-party verification.
+        </div>
+        <div class="stat-cluster">
+          <div class="stat-box">
+            <div class="num">~500K</div>
+            <div class="label">Graduates<br>per year</div>
+          </div>
+          <div class="stat-box">
+            <div class="num">68%</div>
+            <div class="label">Employers hit<br>by fraud</div>
+          </div>
+          <div class="stat-box">
+            <div class="num">₦0</div>
+            <div class="label">Universities<br>earn today</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Solution Flow (Full Width) -->
+    <div class="card" style="grid-column: 1 / -1;">
+      <div class="card-title">
+        <span class="icon" style="background: rgba(52,211,153,0.12);">✦</span>
+        The Solution — Payment-Gated Forensic Verification
+      </div>
+      <div class="flow-steps">
+        <div class="flow-step">
+          <div class="step-num">1</div>
+          <div class="step-title">Upload</div>
+          <div class="step-desc">HR uploads a candidate's academic certificate for verification</div>
+        </div>
+        <div class="flow-step">
+          <div class="step-num">2</div>
+          <div class="step-title">Pay ₦5,000</div>
+          <div class="step-desc">Squad Checkout collects the verification fee via inline modal</div>
+        </div>
+        <div class="flow-step">
+          <div class="step-num">3</div>
+          <div class="step-title">AI Scan</div>
+          <div class="step-desc">Dual-layer ELA + OCR forensic engine analyses the document</div>
+        </div>
+        <div class="flow-step">
+          <div class="step-num">4</div>
+          <div class="step-title">Verdict</div>
+          <div class="step-desc">PASS / FAIL with visual heatmap evidence & forensic findings</div>
+        </div>
+        <div class="flow-step">
+          <div class="step-num">5</div>
+          <div class="step-title">Royalty</div>
+          <div class="step-desc">₦1,000 auto-routed to the university via Squad Transfer API</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AI Engine -->
+    <div class="card">
+      <div class="card-title">
+        <span class="icon" style="background: rgba(251,191,36,0.12);">🧠</span>
+        AI Forensic Engine — Two-Layer Analysis
+      </div>
+      <div class="layers">
+        <div class="layer">
+          <span class="layer-badge visual">Visual</span>
+          <div class="layer-info">
+            <div class="title">Error Level Analysis (ELA)</div>
+            <div class="desc">Re-saves as JPEG and diffs compression artifacts. Digitally spliced names, dates, or grades produce bright red hotspots on the forensic heatmap — invisible to the human eye but detectable at the pixel level.</div>
+          </div>
+        </div>
+        <div class="layer">
+          <span class="layer-badge textual">Textual</span>
+          <div class="layer-info">
+            <div class="title">OCR + Alignment Detection</div>
+            <div class="desc">Tesseract extracts text with bounding boxes. Detects candidate name presence, vertical alignment anomalies from spliced text, and cross-references text regions with ELA compression hotspots.</div>
+          </div>
+        </div>
+      </div>
+      <div class="scoring-bar">
+        <strong>Composite Score (0–100):</strong> ELA (50%) + OCR (50%) weighted. Score ≥ 40 = <strong>FAIL</strong>. 
+        Critical override: ELA hotspots overlapping text regions force a minimum score of 60.
+      </div>
+    </div>
+
+    <!-- Squad API Integration -->
+    <div class="card">
+      <div class="card-title">
+        <span class="icon" style="background: rgba(139,92,246,0.12);">⚡</span>
+        Squad API Integration — 4 Endpoints
+      </div>
+      <div class="api-grid">
+        <div class="api-item">
+          <div class="name">Initiate Payment</div>
+          <div class="purpose">Collect ₦5,000 verification fee via Squad inline checkout modal</div>
+          <div class="endpoint">POST /transaction/initiate</div>
+        </div>
+        <div class="api-item">
+          <div class="name">Verify Transaction</div>
+          <div class="purpose">Server-side confirmation before releasing forensic results</div>
+          <div class="endpoint">GET /transaction/verify/{ref}</div>
+        </div>
+        <div class="api-item">
+          <div class="name">Transfer API</div>
+          <div class="purpose">Route ₦1,000 royalty to the issuing university's bank account</div>
+          <div class="endpoint">POST /payout/transfer</div>
+        </div>
+        <div class="api-item">
+          <div class="name">Sub-Merchant</div>
+          <div class="purpose">Register universities as aggregator sub-merchants on Squad</div>
+          <div class="endpoint">POST /merchant/create-sub-users</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Financial Flow (Full Width) -->
+    <div class="card finance-row">
+      <div class="card-title">
+        <span class="icon" style="background: rgba(6,182,212,0.12);">💰</span>
+        Automated Financial Pipeline — Every Scan Generates Revenue
+      </div>
+      <div class="finance-flow">
+        <div class="finance-node payment">
+          <div class="amount">₦5,000</div>
+          <div class="desc">Employer pays<br>via Squad Checkout</div>
+        </div>
+        <div class="finance-arrow">→</div>
+        <div class="finance-node platform">
+          <div class="amount">₦4,000</div>
+          <div class="desc">TrueSeal<br>platform fee</div>
+        </div>
+        <div class="finance-arrow">+</div>
+        <div class="finance-node university">
+          <div class="amount">₦1,000</div>
+          <div class="desc">University royalty<br>via Squad Transfer</div>
+        </div>
+        <div class="finance-arrow" style="color: rgba(52,211,153,0.3);">= </div>
+        <div style="text-align: center; padding: 6px 12px;">
+          <div style="font-size: 7.5px; color: #34d399; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">Passive income</div>
+          <div style="font-size: 6.5px; color: #64748b; margin-top: 2px; line-height: 1.5;">Universities earn ₦1M+/month<br>at scale with zero effort</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Four Pillars (Full Width) -->
+    <div class="card pillars-row">
+      <div class="card-title">
+        <span class="icon" style="background: rgba(52,211,153,0.12);">◆</span>
+        Alignment with the Four Pillars
+      </div>
+      <div class="pillars-grid">
+        <div class="pillar">
+          <div class="pillar-icon">🤖</div>
+          <div class="pillar-name">AI Automation</div>
+          <div class="pillar-desc">Automates document forensics end-to-end. ELA heatmaps replace manual visual inspection with pixel-level analysis.</div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">📊</div>
+          <div class="pillar-name">Use of Data</div>
+          <div class="pillar-desc">Predictive, pixel-level data analysis detects compression signatures and alignment anomalies in real-time.</div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">⚡</div>
+          <div class="pillar-name">Squad APIs</div>
+          <div class="pillar-desc">4 API endpoints power the entire financial pipeline — from payment collection to automated royalty routing.</div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">💡</div>
+          <div class="pillar-name">Financial Innovation</div>
+          <div class="pillar-desc">Transforms fraud prevention into a revenue stream. Universities earn passive income from every verification.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── Footer ───────────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="footer-left">
+      <strong>TrueSeal</strong> — Forensic Certificate Verification with Automated Royalty Routing<br>
+      Squad Hackathon 3.0 · Challenge 01: "Proof of Life" · Education Domain
+    </div>
+    <div class="footer-right">
+      <span class="tech-tag">Laravel 13</span>
+      <span class="tech-tag">Python / Pillow / NumPy</span>
+      <span class="tech-tag">Tesseract OCR</span>
+      <span class="tech-tag">Squad API v1</span>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
