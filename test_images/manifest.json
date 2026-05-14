@@ -1,0 +1,762 @@
+[
+  {
+    "file": "unilag/clean/unilag_clean_01.jpg",
+    "candidate_name": "Emeka Oluwaseun Oni",
+    "institution": "University of Lagos",
+    "institution_code": "UNILAG",
+    "type": "clean",
+    "expected_verdict": "PASS"
+  },
+  {
+    "file": "unilag/forged/unilag_forged_01.jpg",
+    "candidate_name": "Adebayo Adaeze Eze",
+    "institution": "University of Lagos",
+    "institution_code": "UNILAG",
+    "type": "forged",
+    "expected_verdict": "FAIL",
+    "original_name": "Emeka Oluwaseun Oni",
+    "original_year": 2020,
+    "forged_year": 2019
+  },
+  {
+    "file": "unilag/clean/unilag_clean_02.jpg",
+    "candidate_name": "Ifeanyi Oluwaseun Salami",
+    "institution": "University of Lagos",
+    "institution_code": "UNILAG",
+    "type": "clean",
+    "expected_verdict": "PASS"
+  },
+  {
+    "file": "unilag/forged/unilag_forged_02.jpg",
+    "candidate_name": "Ibrahim Ifeoma Oni",
+    "institution": "University of Lagos",
+    "institution_code": "UNILAG",
+    "type": "forged",
+    "expected_verdict": "FAIL",
+    "original_name": "Ifeanyi Oluwaseun Salami",
+    "original_year": 2020,
+    "forged_year": 2019
+  },
+  {
+    "file": "unilag/clean/unilag_clean_03.jpg",
+    "candidate_name": "Kelechi Olumide Nnamdi",
+    "institution": "University of Lagos",
+    "institution_code": "UNILAG",
+    "type": "clean",
+    "expected_verdict": "PASS"
+  },
+  {
+    "file": "unilag/forged/unilag_forged_03.jpg",
+    "candidate_name": "Damilola Adaeze Salami",
+    "institution": "University of Lagos",
+    "institution_code": "UNILAG",
+    "type": "forged",
+    "expected_verdict": "FAIL",
+    "original_name": "Kelechi Olumide Nnamdi",
+    "original_year": 2021,
+    "forged_year": 2020
+  },
+  {
+    "file": "unilag/clean/unilag_clean_04.jpg",
+    "candidate_name": "Grace Chiamaka Nnamdi",
+    "institution": "University of Lagos",
+    "institution_code": "UNILAG",
+    "type": "clean",
+    "expected_verdict": "PASS"
+  },
+  {
+    "file": "unilag/forged/unilag_forged_04.jpg",
+    "candidate_name": "Amina Babatunde Okwu",
+    "institution": "University of Lagos",
+    "institution_code": "UNILAG",
+    "type": "forged",
+    "expected_verdict": "FAIL",
+    "original_name": "Grace Chiamaka Nnamdi",
+    "original_year": 2021,
+    "forged_year": 2020
+  },
+  {
+    "file": "unilag/clean/unilag_clean_05.jpg",
+    "candidate_name": "Aisha Adaeze Obi",
+    "institution": "University of Lagos",
+    "institution_code": "UNILAG",
+    "type": "clean",
+    "expected_verdict": "PASS"
+  },
+  {
+    "file": "unilag/forged/unilag_forged_05.jpg",
+    "candidate_name": "Kelechi Chukwudi Abubakar",
+    "institution": "University of Lagos",
+    "institution_code": "UNILAG",
+    "type": "forged",
+    "expected_verdict": "FAIL",
+    "original_name": "Aisha Adaeze Obi",
+    "original_year": 2020,
+    "forged_year": 2018
+  },
+  {
+    "file": "unilag/clean/unilag_clean_06.jpg",
+    "candidate_name": "Damilola Nneka Nnamdi",
+    "institution": "University of Lagos",
+    "institution_code": "UNILAG",
+    "type": "clean",
+    "expected_verdict": "PASS"
+  },
+  {
+    "file": "unilag/forged/unilag_forged_06.jpg",
+    "candidate_name": "Yusuf Oluwafemi Salami",
+    "institution": "University of Lagos",
+    "institution_code": "UNILAG",
+    "type": "forged",
+    "expected_verdict": "FAIL",
+    "original_name": "Damilola Nneka Nnamdi",
+    "original_year": 2020,
+    "forged_year": 2021
+  },
+  {
+    "file": "unilag/clean/unilag_clean_07.jpg",
+    "candidate_name": "Grace Uchechi Okwu",
+    "institution": "University of Lagos",
+    "institution_code": "UNILAG",
+    "type": "clean",
+    "expected_verdict": "PASS"
+  },
+  {
+    "file": "unilag/forged/unilag_forged_07.jpg",
+    "candidate_name": "Ibrahim Kayode Nnamdi",
+    "institution": "University of Lagos",
+    "institution_code": "UNILAG",
+    "type": "forged",
+    "expected_verdict": "FAIL",
+    "original_name": "Grace Uchechi Okwu",
+    "original_year": 2023,
+    "forged_year": 2021
+  },
+  {
+    "file": "unilag/clean/unilag_clean_08.jpg",
+    "candidate_name": "Ifeanyi Obiageli Igwe",
+    "institution": "University of Lagos",
+    "institution_code": "UNILAG",
+    "type": "clean",
+    "expected_verdict": "PASS"
+  },
+  {
+    "file": "unilag/forged/unilag_forged_08.jpg",
+    "candidate_name": "Emeka Olayinka Nwachukwu",
+    "institution": "University of Lagos",
+    "institution_code": "UNILAG",
+    "type": "forged",
+    "expected_verdict": "FAIL",
+    "original_name": "Ifeanyi Obiageli Igwe",
+    "original_year": 2024,
+    "forged_year": 2019
+  },
+  {
+    "file": "unilag/clean/unilag_clean_09.jpg",
+    "candidate_name": "Adebayo Nneka Igwe",
+    "institution": "University of Lagos",
+    "institution_code": "UNILAG",
+    "type": "clean",
+    "expected_verdict": "PASS"
+  },
+  {
+    "file": "unilag/forged/unilag_forged_09.jpg",
+    "candidate_name": "Abdullahi Chisom Okonkwo",
+    "institution": "University of Lagos",
+    "institution_code": "UNILAG",
+    "type": "forged",
+    "expected_verdict": "FAIL",
+    "original_name": "Adebayo Nneka Igwe",
+    "original_year": 2024,
+    "forged_year": 2022
+  },
+  {
+    "file": "unilag/clean/unilag_clean_10.jpg",
+    "candidate_name": "Chukwuemeka Oluwaseun Okafor",
+    "institution": "University of Lagos",
+    "institution_code": "UNILAG",
+    "type": "clean",
+    "expected_verdict": "PASS"
+  },
+  {
+    "file": "unilag/forged/unilag_forged_10.jpg",
+    "candidate_name": "Oluwaseun Oluwafemi Bello",
+    "institution": "University of Lagos",
+    "institution_code": "UNILAG",
+    "type": "forged",
+    "expected_verdict": "FAIL",
+    "original_name": "Chukwuemeka Oluwaseun Okafor",
+    "original_year": 2020,
+    "forged_year": 2019
+  },
+  {
+    "file": "ui/clean/ui_clean_01.jpg",
+    "candidate_name": "Abdullahi Babatunde Oni",
+    "institution": "University of Ibadan",
+    "institution_code": "UI",
+    "type": "clean",
+    "expected_verdict": "PASS"
+  },
+  {
+    "file": "ui/forged/ui_forged_01.jpg",
+    "candidate_name": "Amina Obiageli Igwe",
+    "institution": "University of Ibadan",
+    "institution_code": "UI",
+    "type": "forged",
+    "expected_verdict": "FAIL",
+    "original_name": "Abdullahi Babatunde Oni",
+    "original_year": 2020,
+    "forged_year": 2022
+  },
+  {
+    "file": "ui/clean/ui_clean_02.jpg",
+    "candidate_name": "Yusuf Olamide Nnamdi",
+    "institution": "University of Ibadan",
+    "institution_code": "UI",
+    "type": "clean",
+    "expected_verdict": "PASS"
+  },
+  {
+    "file": "ui/forged/ui_forged_02.jpg",
+    "candidate_name": "Oluwaseun Chukwudi Adeniyi",
+    "institution": "University of Ibadan",
+    "institution_code": "UI",
+    "type": "forged",
+    "expected_verdict": "FAIL",
+    "original_name": "Yusuf Olamide Nnamdi",
+    "original_year": 2023,
+    "forged_year": 2018
+  },
+  {
+    "file": "ui/clean/ui_clean_03.jpg",
+    "candidate_name": "Yusuf Nneka Akindele",
+    "institution": "University of Ibadan",
+    "institution_code": "UI",
+    "type": "clean",
+    "expected_verdict": "PASS"
+  },
+  {
+    "file": "ui/forged/ui_forged_03.jpg",
+    "candidate_name": "Ngozi Olumide Okafor",
+    "institution": "University of Ibadan",
+    "institution_code": "UI",
+    "type": "forged",
+    "expected_verdict": "FAIL",
+    "original_name": "Yusuf Nneka Akindele",
+    "original_year": 2024,
+    "forged_year": 2023
+  },
+  {
+    "file": "ui/clean/ui_clean_04.jpg",
+    "candidate_name": "Amina Ayodele Nwachukwu",
+    "institution": "University of Ibadan",
+    "institution_code": "UI",
+    "type": "clean",
+    "expected_verdict": "PASS"
+  },
+  {
+    "file": "ui/forged/ui_forged_04.jpg",
+    "candidate_name": "Emeka Olamide Eze",
+    "institution": "University of Ibadan",
+    "institution_code": "UI",
+    "type": "forged",
+    "expected_verdict": "FAIL",
+    "original_name": "Amina Ayodele Nwachukwu",
+    "original_year": 2024,
+    "forged_year": 2019
+  },
+  {
+    "file": "ui/clean/ui_clean_05.jpg",
+    "candidate_name": "Blessing Nkechi Nwachukwu",
+    "institution": "University of Ibadan",
+    "institution_code": "UI",
+    "type": "clean",
+    "expected_verdict": "PASS"
+  },
+  {
+    "file": "ui/forged/ui_forged_05.jpg",
+    "candidate_name": "Chidinma Oluwafemi Okonkwo",
+    "institution": "University of Ibadan",
+    "institution_code": "UI",
+    "type": "forged",
+    "expected_verdict": "FAIL",
+    "original_name": "Blessing Nkechi Nwachukwu",
+    "original_year": 2022,
+    "forged_year": 2018
+  },
+  {
+    "file": "ui/clean/ui_clean_06.jpg",
+    "candidate_name": "Tunde Ayodele Akindele",
+    "institution": "University of Ibadan",
+    "institution_code": "UI",
+    "type": "clean",
+    "expected_verdict": "PASS"
+  },
+  {
+    "file": "ui/forged/ui_forged_06.jpg",
+    "candidate_name": "Blessing Olayinka Nwachukwu",
+    "institution": "University of Ibadan",
+    "institution_code": "UI",
+    "type": "forged",
+    "expected_verdict": "FAIL",
+    "original_name": "Tunde Ayodele Akindele",
+    "original_year": 2022,
+    "forged_year": 2024
+  },
+  {
+    "file": "ui/clean/ui_clean_07.jpg",
+    "candidate_name": "Chukwuemeka Nkechi Eze",
+    "institution": "University of Ibadan",
+    "institution_code": "UI",
+    "type": "clean",
+    "expected_verdict": "PASS"
+  },
+  {
+    "file": "ui/forged/ui_forged_07.jpg",
+    "candidate_name": "Folake Chisom Ogundimu",
+    "institution": "University of Ibadan",
+    "institution_code": "UI",
+    "type": "forged",
+    "expected_verdict": "FAIL",
+    "original_name": "Chukwuemeka Nkechi Eze",
+    "original_year": 2019,
+    "forged_year": 2018
+  },
+  {
+    "file": "ui/clean/ui_clean_08.jpg",
+    "candidate_name": "Oluwaseun Babatunde Nnamdi",
+    "institution": "University of Ibadan",
+    "institution_code": "UI",
+    "type": "clean",
+    "expected_verdict": "PASS"
+  },
+  {
+    "file": "ui/forged/ui_forged_08.jpg",
+    "candidate_name": "Chidinma Kayode Nnamdi",
+    "institution": "University of Ibadan",
+    "institution_code": "UI",
+    "type": "forged",
+    "expected_verdict": "FAIL",
+    "original_name": "Oluwaseun Babatunde Nnamdi",
+    "original_year": 2024,
+    "forged_year": 2021
+  },
+  {
+    "file": "ui/clean/ui_clean_09.jpg",
+    "candidate_name": "Kelechi Nneka Eze",
+    "institution": "University of Ibadan",
+    "institution_code": "UI",
+    "type": "clean",
+    "expected_verdict": "PASS"
+  },
+  {
+    "file": "ui/forged/ui_forged_09.jpg",
+    "candidate_name": "Oluwaseun Oluwaseun Abdulrahman",
+    "institution": "University of Ibadan",
+    "institution_code": "UI",
+    "type": "forged",
+    "expected_verdict": "FAIL",
+    "original_name": "Kelechi Nneka Eze",
+    "original_year": 2021,
+    "forged_year": 2023
+  },
+  {
+    "file": "ui/clean/ui_clean_10.jpg",
+    "candidate_name": "Oluwaseun Oluwafemi Eze",
+    "institution": "University of Ibadan",
+    "institution_code": "UI",
+    "type": "clean",
+    "expected_verdict": "PASS"
+  },
+  {
+    "file": "ui/forged/ui_forged_10.jpg",
+    "candidate_name": "Abdullahi Olayinka Obi",
+    "institution": "University of Ibadan",
+    "institution_code": "UI",
+    "type": "forged",
+    "expected_verdict": "FAIL",
+    "original_name": "Oluwaseun Oluwafemi Eze",
+    "original_year": 2020,
+    "forged_year": 2024
+  },
+  {
+    "file": "cu/clean/cu_clean_01.jpg",
+    "candidate_name": "Adebayo Oluwafemi Chukwuma",
+    "institution": "Covenant University",
+    "institution_code": "CU",
+    "type": "clean",
+    "expected_verdict": "PASS"
+  },
+  {
+    "file": "cu/forged/cu_forged_01.jpg",
+    "candidate_name": "Kelechi Chiamaka Oni",
+    "institution": "Covenant University",
+    "institution_code": "CU",
+    "type": "forged",
+    "expected_verdict": "FAIL",
+    "original_name": "Adebayo Oluwafemi Chukwuma",
+    "original_year": 2021,
+    "forged_year": 2023
+  },
+  {
+    "file": "cu/clean/cu_clean_02.jpg",
+    "candidate_name": "Aisha Chukwudi Nnamdi",
+    "institution": "Covenant University",
+    "institution_code": "CU",
+    "type": "clean",
+    "expected_verdict": "PASS"
+  },
+  {
+    "file": "cu/forged/cu_forged_02.jpg",
+    "candidate_name": "Abdullahi Ayodele Salami",
+    "institution": "Covenant University",
+    "institution_code": "CU",
+    "type": "forged",
+    "expected_verdict": "FAIL",
+    "original_name": "Aisha Chukwudi Nnamdi",
+    "original_year": 2019,
+    "forged_year": 2018
+  },
+  {
+    "file": "cu/clean/cu_clean_03.jpg",
+    "candidate_name": "Oluwaseun Nkechi Salami",
+    "institution": "Covenant University",
+    "institution_code": "CU",
+    "type": "clean",
+    "expected_verdict": "PASS"
+  },
+  {
+    "file": "cu/forged/cu_forged_03.jpg",
+    "candidate_name": "Chidinma Oluwadamilare Eze",
+    "institution": "Covenant University",
+    "institution_code": "CU",
+    "type": "forged",
+    "expected_verdict": "FAIL",
+    "original_name": "Oluwaseun Nkechi Salami",
+    "original_year": 2023,
+    "forged_year": 2024
+  },
+  {
+    "file": "cu/clean/cu_clean_04.jpg",
+    "candidate_name": "Emeka Oluwadamilare Salami",
+    "institution": "Covenant University",
+    "institution_code": "CU",
+    "type": "clean",
+    "expected_verdict": "PASS"
+  },
+  {
+    "file": "cu/forged/cu_forged_04.jpg",
+    "candidate_name": "Kelechi Ayodele Abubakar",
+    "institution": "Covenant University",
+    "institution_code": "CU",
+    "type": "forged",
+    "expected_verdict": "FAIL",
+    "original_name": "Emeka Oluwadamilare Salami",
+    "original_year": 2020,
+    "forged_year": 2021
+  },
+  {
+    "file": "cu/clean/cu_clean_05.jpg",
+    "candidate_name": "Emeka Uchechi Adeyemi",
+    "institution": "Covenant University",
+    "institution_code": "CU",
+    "type": "clean",
+    "expected_verdict": "PASS"
+  },
+  {
+    "file": "cu/forged/cu_forged_05.jpg",
+    "candidate_name": "Adebayo Chiamaka Lawal",
+    "institution": "Covenant University",
+    "institution_code": "CU",
+    "type": "forged",
+    "expected_verdict": "FAIL",
+    "original_name": "Emeka Uchechi Adeyemi",
+    "original_year": 2020,
+    "forged_year": 2021
+  },
+  {
+    "file": "cu/clean/cu_clean_06.jpg",
+    "candidate_name": "Oluwaseun Nneka Okwu",
+    "institution": "Covenant University",
+    "institution_code": "CU",
+    "type": "clean",
+    "expected_verdict": "PASS"
+  },
+  {
+    "file": "cu/forged/cu_forged_06.jpg",
+    "candidate_name": "Tunde Adaora Oni",
+    "institution": "Covenant University",
+    "institution_code": "CU",
+    "type": "forged",
+    "expected_verdict": "FAIL",
+    "original_name": "Oluwaseun Nneka Okwu",
+    "original_year": 2024,
+    "forged_year": 2018
+  },
+  {
+    "file": "cu/clean/cu_clean_07.jpg",
+    "candidate_name": "Ifeanyi Ayodele Okwu",
+    "institution": "Covenant University",
+    "institution_code": "CU",
+    "type": "clean",
+    "expected_verdict": "PASS"
+  },
+  {
+    "file": "cu/forged/cu_forged_07.jpg",
+    "candidate_name": "Ibrahim Oluwaseun Igwe",
+    "institution": "Covenant University",
+    "institution_code": "CU",
+    "type": "forged",
+    "expected_verdict": "FAIL",
+    "original_name": "Ifeanyi Ayodele Okwu",
+    "original_year": 2023,
+    "forged_year": 2022
+  },
+  {
+    "file": "cu/clean/cu_clean_08.jpg",
+    "candidate_name": "Amina Ayodele Nnamdi",
+    "institution": "Covenant University",
+    "institution_code": "CU",
+    "type": "clean",
+    "expected_verdict": "PASS"
+  },
+  {
+    "file": "cu/forged/cu_forged_08.jpg",
+    "candidate_name": "Damilola Olayinka Salami",
+    "institution": "Covenant University",
+    "institution_code": "CU",
+    "type": "forged",
+    "expected_verdict": "FAIL",
+    "original_name": "Amina Ayodele Nnamdi",
+    "original_year": 2024,
+    "forged_year": 2019
+  },
+  {
+    "file": "cu/clean/cu_clean_09.jpg",
+    "candidate_name": "Ibrahim Uchechi Ogundimu",
+    "institution": "Covenant University",
+    "institution_code": "CU",
+    "type": "clean",
+    "expected_verdict": "PASS"
+  },
+  {
+    "file": "cu/forged/cu_forged_09.jpg",
+    "candidate_name": "Kelechi Obiageli Abdulrahman",
+    "institution": "Covenant University",
+    "institution_code": "CU",
+    "type": "forged",
+    "expected_verdict": "FAIL",
+    "original_name": "Ibrahim Uchechi Ogundimu",
+    "original_year": 2022,
+    "forged_year": 2021
+  },
+  {
+    "file": "cu/clean/cu_clean_10.jpg",
+    "candidate_name": "Folake Temitope Ogundimu",
+    "institution": "Covenant University",
+    "institution_code": "CU",
+    "type": "clean",
+    "expected_verdict": "PASS"
+  },
+  {
+    "file": "cu/forged/cu_forged_10.jpg",
+    "candidate_name": "Obinna Olamide Eze",
+    "institution": "Covenant University",
+    "institution_code": "CU",
+    "type": "forged",
+    "expected_verdict": "FAIL",
+    "original_name": "Folake Temitope Ogundimu",
+    "original_year": 2023,
+    "forged_year": 2019
+  },
+  {
+    "file": "abu/clean/abu_clean_01.jpg",
+    "candidate_name": "Chidinma Olamide Akindele",
+    "institution": "Ahmadu Bello University",
+    "institution_code": "ABU",
+    "type": "clean",
+    "expected_verdict": "PASS"
+  },
+  {
+    "file": "abu/forged/abu_forged_01.jpg",
+    "candidate_name": "Yusuf Nkechi Okonkwo",
+    "institution": "Ahmadu Bello University",
+    "institution_code": "ABU",
+    "type": "forged",
+    "expected_verdict": "FAIL",
+    "original_name": "Chidinma Olamide Akindele",
+    "original_year": 2022,
+    "forged_year": 2018
+  },
+  {
+    "file": "abu/clean/abu_clean_02.jpg",
+    "candidate_name": "Yusuf Babatunde Igwe",
+    "institution": "Ahmadu Bello University",
+    "institution_code": "ABU",
+    "type": "clean",
+    "expected_verdict": "PASS"
+  },
+  {
+    "file": "abu/forged/abu_forged_02.jpg",
+    "candidate_name": "Abdullahi Kayode Adeniyi",
+    "institution": "Ahmadu Bello University",
+    "institution_code": "ABU",
+    "type": "forged",
+    "expected_verdict": "FAIL",
+    "original_name": "Yusuf Babatunde Igwe",
+    "original_year": 2023,
+    "forged_year": 2021
+  },
+  {
+    "file": "abu/clean/abu_clean_03.jpg",
+    "candidate_name": "Ibrahim Oluwafemi Abdulrahman",
+    "institution": "Ahmadu Bello University",
+    "institution_code": "ABU",
+    "type": "clean",
+    "expected_verdict": "PASS"
+  },
+  {
+    "file": "abu/forged/abu_forged_03.jpg",
+    "candidate_name": "Yusuf Nneka Abdulrahman",
+    "institution": "Ahmadu Bello University",
+    "institution_code": "ABU",
+    "type": "forged",
+    "expected_verdict": "FAIL",
+    "original_name": "Ibrahim Oluwafemi Abdulrahman",
+    "original_year": 2022,
+    "forged_year": 2018
+  },
+  {
+    "file": "abu/clean/abu_clean_04.jpg",
+    "candidate_name": "Yusuf Nneka Adeniyi",
+    "institution": "Ahmadu Bello University",
+    "institution_code": "ABU",
+    "type": "clean",
+    "expected_verdict": "PASS"
+  },
+  {
+    "file": "abu/forged/abu_forged_04.jpg",
+    "candidate_name": "Kelechi Oluwafemi Abdulrahman",
+    "institution": "Ahmadu Bello University",
+    "institution_code": "ABU",
+    "type": "forged",
+    "expected_verdict": "FAIL",
+    "original_name": "Yusuf Nneka Adeniyi",
+    "original_year": 2020,
+    "forged_year": 2022
+  },
+  {
+    "file": "abu/clean/abu_clean_05.jpg",
+    "candidate_name": "Ngozi Ayodele Lawal",
+    "institution": "Ahmadu Bello University",
+    "institution_code": "ABU",
+    "type": "clean",
+    "expected_verdict": "PASS"
+  },
+  {
+    "file": "abu/forged/abu_forged_05.jpg",
+    "candidate_name": "Ibrahim Oluwafemi Salami",
+    "institution": "Ahmadu Bello University",
+    "institution_code": "ABU",
+    "type": "forged",
+    "expected_verdict": "FAIL",
+    "original_name": "Ngozi Ayodele Lawal",
+    "original_year": 2023,
+    "forged_year": 2022
+  },
+  {
+    "file": "abu/clean/abu_clean_06.jpg",
+    "candidate_name": "Chukwuemeka Olamide Oni",
+    "institution": "Ahmadu Bello University",
+    "institution_code": "ABU",
+    "type": "clean",
+    "expected_verdict": "PASS"
+  },
+  {
+    "file": "abu/forged/abu_forged_06.jpg",
+    "candidate_name": "Fatima Kayode Salami",
+    "institution": "Ahmadu Bello University",
+    "institution_code": "ABU",
+    "type": "forged",
+    "expected_verdict": "FAIL",
+    "original_name": "Chukwuemeka Olamide Oni",
+    "original_year": 2019,
+    "forged_year": 2018
+  },
+  {
+    "file": "abu/clean/abu_clean_07.jpg",
+    "candidate_name": "Grace Adaora Okonkwo",
+    "institution": "Ahmadu Bello University",
+    "institution_code": "ABU",
+    "type": "clean",
+    "expected_verdict": "PASS"
+  },
+  {
+    "file": "abu/forged/abu_forged_07.jpg",
+    "candidate_name": "Kelechi Uchechi Oni",
+    "institution": "Ahmadu Bello University",
+    "institution_code": "ABU",
+    "type": "forged",
+    "expected_verdict": "FAIL",
+    "original_name": "Grace Adaora Okonkwo",
+    "original_year": 2020,
+    "forged_year": 2022
+  },
+  {
+    "file": "abu/clean/abu_clean_08.jpg",
+    "candidate_name": "Oluwaseun Temitope Okonkwo",
+    "institution": "Ahmadu Bello University",
+    "institution_code": "ABU",
+    "type": "clean",
+    "expected_verdict": "PASS"
+  },
+  {
+    "file": "abu/forged/abu_forged_08.jpg",
+    "candidate_name": "Yusuf Chiamaka Okonkwo",
+    "institution": "Ahmadu Bello University",
+    "institution_code": "ABU",
+    "type": "forged",
+    "expected_verdict": "FAIL",
+    "original_name": "Oluwaseun Temitope Okonkwo",
+    "original_year": 2021,
+    "forged_year": 2023
+  },
+  {
+    "file": "abu/clean/abu_clean_09.jpg",
+    "candidate_name": "Yusuf Nkechi Akindele",
+    "institution": "Ahmadu Bello University",
+    "institution_code": "ABU",
+    "type": "clean",
+    "expected_verdict": "PASS"
+  },
+  {
+    "file": "abu/forged/abu_forged_09.jpg",
+    "candidate_name": "Emeka Babatunde Chukwuma",
+    "institution": "Ahmadu Bello University",
+    "institution_code": "ABU",
+    "type": "forged",
+    "expected_verdict": "FAIL",
+    "original_name": "Yusuf Nkechi Akindele",
+    "original_year": 2022,
+    "forged_year": 2018
+  },
+  {
+    "file": "abu/clean/abu_clean_10.jpg",
+    "candidate_name": "Obinna Adaora Lawal",
+    "institution": "Ahmadu Bello University",
+    "institution_code": "ABU",
+    "type": "clean",
+    "expected_verdict": "PASS"
+  },
+  {
+    "file": "abu/forged/abu_forged_10.jpg",
+    "candidate_name": "Ifeanyi Olumide Adekunle",
+    "institution": "Ahmadu Bello University",
+    "institution_code": "ABU",
+    "type": "forged",
+    "expected_verdict": "FAIL",
+    "original_name": "Obinna Adaora Lawal",
+    "original_year": 2019,
+    "forged_year": 2018
+  }
+]
