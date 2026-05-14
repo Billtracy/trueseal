@@ -1,11 +1,11 @@
 <x-layouts.app title="TrueSeal Dashboard">
     <div class="mb-8 flex flex-col justify-between gap-4 lg:flex-row lg:items-end">
         <div class="animate-fade-in-up">
-            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-emerald-300">ForgeSight dashboard</p>
+            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-squad-crimson">ForgeSight dashboard</p>
             <h1 class="mt-2 text-3xl font-bold text-white">Verification command center</h1>
             <p class="mt-2 max-w-2xl text-sm leading-6 text-slate-400">Track paid scans, forensic verdicts, and the royalty ledger for issuing institutions.</p>
         </div>
-        <a href="{{ route('verifications.create') }}" class="animate-fade-in-up delay-2 inline-flex items-center justify-center gap-2 rounded-lg bg-emerald-400 px-5 py-3 text-sm font-bold text-slate-950 transition hover:bg-emerald-300 hover:shadow-lg hover:shadow-emerald-400/20 active:scale-[0.98]">
+        <a href="{{ route('verifications.create') }}" class="animate-fade-in-up delay-2 inline-flex items-center justify-center gap-2 rounded-lg bg-squad-crimson px-5 py-3 text-sm font-bold text-white transition hover:bg-squad-crimson/85 hover:shadow-lg hover:shadow-squad-crimson/20 active:scale-[0.98]">
             <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
             Initiate new scan
         </a>
@@ -25,11 +25,11 @@
         <div class="glass hover-lift animate-fade-in-up delay-2 rounded-xl p-5">
             <div class="flex items-center justify-between">
                 <div class="text-sm text-slate-400">Paid payments</div>
-                <div class="grid h-8 w-8 place-items-center rounded-lg bg-emerald-400/10">
-                    <svg class="h-4 w-4 text-emerald-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                <div class="grid h-8 w-8 place-items-center rounded-lg bg-squad-teal/15">
+                    <svg class="h-4 w-4 text-squad-teal" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                 </div>
             </div>
-            <div class="mt-3 text-3xl font-bold text-emerald-300">{{ $paidPayments }}</div>
+            <div class="mt-3 text-3xl font-bold text-squad-teal">{{ $paidPayments }}</div>
         </div>
         <div class="glass hover-lift animate-fade-in-up delay-3 rounded-xl p-5">
             <div class="flex items-center justify-between">
@@ -86,7 +86,7 @@
                             </td>
                             <td class="px-5 py-4 text-slate-300">{{ $verification->institution->name }}</td>
                             <td class="px-5 py-4">
-                                <span class="rounded-md border px-2 py-1 text-xs {{ $verification->payment?->status === 'paid' ? 'border-emerald-400/30 bg-emerald-400/10 text-emerald-200' : 'border-white/10 bg-white/[0.03] text-slate-300' }}">
+                                <span class="rounded-md border px-2 py-1 text-xs {{ $verification->payment?->status === 'paid' ? 'border-squad-teal/30 bg-squad-teal/10 text-emerald-200' : 'border-white/10 bg-white/[0.03] text-slate-300' }}">
                                     {{ strtoupper($verification->payment?->status ?? 'unpaid') }}
                                 </span>
                             </td>
@@ -95,7 +95,7 @@
                                 <span class="rounded-md border px-2 py-1 text-xs font-semibold {{ $statusClass }}">{{ strtoupper($verification->verdict ?? $verification->status) }}</span>
                             </td>
                             <td class="px-5 py-4 text-right">
-                                <a href="{{ route('verifications.show', $verification) }}" class="inline-flex items-center gap-1 text-sm font-medium text-emerald-300 transition hover:text-emerald-200">
+                                <a href="{{ route('verifications.show', $verification) }}" class="inline-flex items-center gap-1 text-sm font-medium text-squad-crimson transition hover:text-squad-crimson/80">
                                     Open
                                     <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
                                 </a>

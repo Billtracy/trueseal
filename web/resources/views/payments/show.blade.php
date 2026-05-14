@@ -1,7 +1,7 @@
 <x-layouts.app title="TrueSeal Payment">
     <div class="mx-auto max-w-3xl">
         <div class="mb-8">
-            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-emerald-300">Squad checkout</p>
+            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-squad-crimson">Squad checkout</p>
             <h1 class="mt-2 text-3xl font-semibold text-white">Forensic verification fee</h1>
             <p class="mt-2 text-sm leading-6 text-slate-400">Payment unlocks the scan and records the university royalty ledger entry.</p>
         </div>
@@ -57,7 +57,7 @@
             <div class="mt-6 flex flex-col gap-3 sm:flex-row">
                 @if ($payment->provider === 'squad' && $squadPublicKey)
                     {{-- Inline Squad Payment Modal --}}
-                    <button id="squad-pay-btn" class="inline-flex flex-1 items-center justify-center rounded-md bg-emerald-400 px-4 py-3 text-sm font-semibold text-slate-950 transition hover:bg-emerald-300">
+                    <button id="squad-pay-btn" class="inline-flex flex-1 items-center justify-center rounded-md bg-squad-crimson px-4 py-3 text-sm font-semibold text-white transition hover:bg-squad-crimson/85">
                         Pay with Squad
                     </button>
                     {{-- Fallback redirect --}}
@@ -65,7 +65,7 @@
                         Open checkout page instead
                     </a>
                 @else
-                    <a href="{{ $payment->checkout_url }}" class="inline-flex flex-1 items-center justify-center rounded-md bg-emerald-400 px-4 py-3 text-sm font-semibold text-slate-950 transition hover:bg-emerald-300">
+                    <a href="{{ $payment->checkout_url }}" class="inline-flex flex-1 items-center justify-center rounded-md bg-squad-crimson px-4 py-3 text-sm font-semibold text-white transition hover:bg-squad-crimson/85">
                         {{ $payment->provider === 'mock' ? 'Complete mock payment' : 'Open Squad checkout' }}
                     </a>
                 @endif
