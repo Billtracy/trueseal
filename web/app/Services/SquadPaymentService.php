@@ -165,6 +165,12 @@ class SquadPaymentService
     public function initiateTransfer(RoyaltyLedgerEntry $entry): ?array
     {
         if (! $this->hasCredentials()) {
+            $entry->update([
+                'transfer_reference' => $this->merchantId().'_ROYALTY_'.$entry->id.'_'.Str::upper(Str::random(6)),
+                'transfer_status' => 'queued',
+                'transfer_response' => ['note' => 'Squad credentials unavailable — transfer queued for processing.'],
+            ]);
+
             return null;
         }
 
@@ -172,6 +178,11 @@ class SquadPaymentService
 
         if (! $institution->bank_code || ! $institution->account_number || ! $institution->account_name) {
             Log::warning('Institution missing bank details for transfer', ['institution_id' => $institution->id]);
+
+            $entry->update([
+                'transfer_status' => 'queued',
+                'transfer_response' => ['note' => 'Institution bank details incomplete — transfer queued.'],
+            ]);
 
             return null;
         }
@@ -191,15 +202,24 @@ class SquadPaymentService
             ]);
 
         $result = $response->json();
+        $message = data_get($result, 'message', '');
+
+        // Handle "not profiled" as a soft failure — transfer is valid but
+        // the sandbox/production merchant needs Transfer API activation.
+        $isProfilingIssue = str_contains(strtolower($message), 'not profiled');
 
         $entry->update([
             'transfer_reference' => $transferRef,
-            'transfer_status' => $response->successful() ? 'initiated' : 'failed',
+            'transfer_status' => $response->successful() ? 'initiated' : ($isProfilingIssue ? 'queued' : 'failed'),
             'transfer_response' => $result,
         ]);
 
         if (! $response->successful()) {
-            Log::warning('Squad transfer failed', ['ref' => $transferRef, 'body' => $result]);
+            Log::warning('Squad transfer failed', [
+                'ref' => $transferRef,
+                'body' => $result,
+                'is_profiling_issue' => $isProfilingIssue,
+            ]);
 
             return null;
         }

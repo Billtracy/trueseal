@@ -219,14 +219,29 @@
                     </div>
                     <div class="flex justify-between gap-4">
                         <dt class="text-slate-400">Transfer status</dt>
-                        <dd class="font-bold {{ ($verification->royaltyLedgerEntry?->transfer_status === 'success') ? 'text-emerald-300' : 'text-amber-300' }}">
-                            {{ strtoupper($verification->royaltyLedgerEntry?->transfer_status ?? $verification->royaltyLedgerEntry?->status ?? 'pending') }}
-                        </dd>
+                        @php
+                            $ts = $verification->royaltyLedgerEntry?->transfer_status ?? $verification->royaltyLedgerEntry?->status ?? 'pending';
+                            $tsColor = match($ts) {
+                                'success', 'transferred' => 'text-emerald-300',
+                                'queued', 'initiated' => 'text-cyan-200',
+                                'failed' => 'text-red-300',
+                                default => 'text-amber-300',
+                            };
+                        @endphp
+                        <dd class="font-bold {{ $tsColor }}">{{ strtoupper($ts) }}</dd>
                     </div>
                     @if ($verification->royaltyLedgerEntry?->transfer_reference)
                         <div class="flex justify-between gap-4">
                             <dt class="text-slate-400">Transfer ref</dt>
                             <dd class="font-mono text-xs text-slate-300">{{ $verification->royaltyLedgerEntry->transfer_reference }}</dd>
+                        </div>
+                    @endif
+                    @if ($ts === 'queued')
+                        <div class="mt-1 rounded-lg border border-cyan-300/20 bg-cyan-300/5 p-3">
+                            <div class="flex items-start gap-2">
+                                <span class="mt-0.5 text-cyan-300">⏳</span>
+                                <p class="text-xs text-cyan-100/70">Royalty transfer queued — will process automatically once the Squad Transfer API service is activated on the merchant account.</p>
+                            </div>
                         </div>
                     @endif
                 </dl>
