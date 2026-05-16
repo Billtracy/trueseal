@@ -295,9 +295,12 @@ This creates a **complete audit trail** proving that every royalty payment was a
 
 ## Team
 
+- **Bamigbade Emmanuel Oluwaferanmi** — Software Engineer & Law Student
+- **Adegboye Habeebulah Temitope** — UI/UX Designer & Law Student
+
 Built for **Squad Hackathon 3.0** — Challenge 01: "Proof of Life"
 
-A print-ready A4 one-pager detailing the project is included in the repository as `TrueSeal_OnePager.html`.
+A print-ready A4 one-pager detailing the project is included in the repository as `TrueSeal — One-Pager.pdf`.
 
 ---
 
