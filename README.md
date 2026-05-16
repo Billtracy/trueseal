@@ -62,14 +62,16 @@ The university earns passive income. The employer gets instant trust verificatio
                   Transfer ref: {MERCHANT_ID}_ROYALTY_{ledger_id}_{random}
 ```
 
-### Forensic Engine (Two-Layer Analysis)
+### Forensic Engine (Four-Layer Analysis)
 
-| Layer | Technology | What It Detects |
-|-------|-----------|-----------------|
-| **Visual (ELA)** | Pillow, NumPy | Compression inconsistencies from pixel edits — name/date splicing shows as red hotspots on the heatmap |
-| **Textual (OCR)** | Tesseract 5.3 + pytesseract | Candidate name presence, bounding box alignment anomalies, ELA–text region cross-referencing |
+| Layer | Technology | Weight | What It Detects |
+|-------|-----------|--------|-----------------|
+| **Visual (ELA)** | Pillow, NumPy | 35% | Compression inconsistencies from pixel edits — name/date splicing shows as red hotspots on the heatmap |
+| **Textual (OCR)** | Tesseract 5.3 | 30% | Candidate name presence, bounding box alignment anomalies, ELA–text region cross-referencing |
+| **Noise Consistency** | Laplacian Filter | 20% | Local noise variance to detect spliced regions from different camera sensors or compression histories |
+| **Edge Coherence** | Sobel Operators | 15% | Edge density anomalies that indicate cropped and pasted text blocks |
 
-The two scores are combined with equal weighting into a **composite score** (0–100). Scores ≥ 40 trigger a **FAIL** verdict.
+The four scores are combined into a **composite score** (0–100). The engine outputs a Confidence Level (HIGH/MEDIUM/LOW) via multi-layer agreement. Scores ≥ 40 trigger a **FAIL** verdict.
 
 ---
 
@@ -78,7 +80,7 @@ The two scores are combined with equal weighting into a **composite score** (0�
 | Component | Technology | Version |
 |-----------|-----------|---------|
 | Backend | Laravel (PHP) | 13.8 |
-| Frontend | Blade + Tailwind CSS | 4.x |
+| Frontend | Blade + Tailwind CSS (Squadco Brand Identity) | 4.x |
 | AI Engine | Python + Pillow + NumPy | 3.12 |
 | OCR | Tesseract OCR + pytesseract | 5.3.4 |
 | Payments | Squad API (Sandbox) | v1 |
@@ -236,9 +238,10 @@ Generates **80 certificates** (40 clean + 40 forged) across all 4 universities w
 ### What to Look For
 
 - **ELA Heatmap**: Forged certificates show bright red regions where the name and year were digitally spliced — the double-JPEG compression creates a visible signature
+- **Four-Layer Breakdown**: 4 color-coded progress bars showing per-layer scores (ELA, OCR, Noise, Edge) with layer tags and confidence badges
 - **Score Gauge**: Animated SVG ring shows the composite score (0–100)
 - **Alignment Anomalies**: OCR detects words with abnormal vertical positioning
-- **Royalty Transfer**: After payment, the dashboard shows the transfer status and reference for the ₦1,000 routed to the university
+- **Royalty Transfer**: After payment, the dashboard shows the transfer status (green=success, cyan=queued, red=failed) and reference for the ₦1,000 routed to the university
 
 ---
 
@@ -283,6 +286,7 @@ This creates a **complete audit trail** proving that every royalty payment was a
 | Constraint | Detail |
 |-----------|--------|
 | Transfer API banks | Sandbox transfers are limited to **GTBank (000013)** — demo universities use this code |
+| Transfer API access | Sandbox merchants are not profiled for Payouts (returns 400). Transfers are marked as **queued** (cyan) instead of failed. |
 | Payment amounts | Sandbox accepts test card numbers from Squad documentation |
 | Sub-merchant registration | All 4 universities are auto-registered during `db:seed` |
 | Webhook testing | Use [ngrok](https://ngrok.com) or [Hookdeck](https://hookdeck.com) to expose localhost |
@@ -292,6 +296,8 @@ This creates a **complete audit trail** proving that every royalty payment was a
 ## Team
 
 Built for **Squad Hackathon 3.0** — Challenge 01: "Proof of Life"
+
+A print-ready A4 one-pager detailing the project is included in the repository as `TrueSeal_OnePager.html`.
 
 ---
 
