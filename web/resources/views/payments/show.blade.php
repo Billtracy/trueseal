@@ -50,7 +50,7 @@
 
             @if ($payment->provider === 'mock')
                 <div class="mt-6 rounded-lg border border-amber-300/30 bg-amber-300/10 p-4 text-sm text-amber-100">
-                    OPay sandbox credentials are not configured or checkout initiation failed, so this demo is using the mock payment fallback.
+                    OPay credentials are not configured, so this demo is using the mock payment fallback.
                 </div>
             @endif
 
@@ -82,7 +82,7 @@
             document.getElementById('opay-pay-btn')?.addEventListener('click', function () {
                 window.location.href = @json(route('payments.mock', $payment));
             });
-            
+
             document.getElementById('opay-pay-btn')?.addEventListener('click', function () {
                 const opayInstance = new window.opay({
                     onClose: () => console.log('OPay modal closed'),

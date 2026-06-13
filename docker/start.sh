@@ -15,5 +15,8 @@ php artisan config:cache
 php artisan route:cache
 php artisan view:cache
 
+# Ensure storage/logs permissions are correct if artisan commands created a root-owned log file
+chown -R www-data:www-data /var/www/html/web/storage
+
 # Start Supervisor (which starts Nginx and PHP-FPM)
 exec /usr/bin/supervisord -n -c /etc/supervisor/conf.d/supervisord.conf
