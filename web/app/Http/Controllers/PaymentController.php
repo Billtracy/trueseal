@@ -119,7 +119,12 @@ class PaymentController extends Controller
             );
 
             // Attempt to initiate the royalty transfer via OPay Transfer API
-            $opayPaymentService->initiateTransfer($royalty);
+            try {
+                $opayPaymentService->initiateTransfer($royalty);
+            } catch (Throwable $e) {
+                // Ignore transfer failure so it doesn't break the application
+                \Illuminate\Support\Facades\Log::warning('OPay Transfer Failed: ' . $e->getMessage());
+            }
         }
 
         if (! $payment->verification->fresh()->hasCompletedScan()) {
