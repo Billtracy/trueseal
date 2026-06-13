@@ -62,8 +62,8 @@ RUN mkdir -p database \
     && touch database/database.sqlite
 
 # Fix permissions
-RUN chown -R www-data:www-data /var/www/html/web/storage /var/www/html/web/bootstrap/cache \
-    && chmod -R 775 /var/www/html/web/storage /var/www/html/web/bootstrap/cache
+RUN chown -R www-data:www-data /var/www/html/web/storage /var/www/html/web/bootstrap/cache /var/www/html/web/database \
+    && chmod -R 775 /var/www/html/web/storage /var/www/html/web/bootstrap/cache /var/www/html/web/database
 
 # -------------------------------
 # Configure Nginx & Supervisor

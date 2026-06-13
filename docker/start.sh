@@ -1,11 +1,14 @@
 #!/bin/sh
 
 # Set correct permissions
-chown -R www-data:www-data /var/www/html/web/storage /var/www/html/web/bootstrap/cache
+chown -R www-data:www-data /var/www/html/web/storage /var/www/html/web/bootstrap/cache /var/www/html/web/database
 
 # Run Laravel migrations (force for production/container)
 cd /var/www/html/web
 php artisan migrate --force
+
+# Ensure database permissions are still correct after migration
+chown -R www-data:www-data /var/www/html/web/database
 
 # Optimize Laravel
 php artisan config:cache
