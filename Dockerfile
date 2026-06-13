@@ -1,6 +1,6 @@
 # Use an official PHP 8.2 FPM image with Alpine for a smaller footprint, 
 # but Debian/Ubuntu is often easier for Python+PHP hybrid environments.
-FROM php:8.2-fpm
+FROM php:8.3-fpm
 
 # Install system dependencies, Nginx, Supervisor, Python 3, Tesseract OCR
 RUN apt-get update && apt-get install -y \
