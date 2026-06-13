@@ -43,8 +43,8 @@ return [
     ],
 
     'truststack' => [
-        'python_bin' => env('TRUESEAL_PYTHON_BIN', 'python3'),
-        'engine_path' => env('TRUESEAL_ENGINE_PATH') ?: base_path('../python/truststack_forensics.py'),
+        'python_bin' => env('TRUSTSTACK_PYTHON_BIN', 'python3'),
+        'engine_path' => env('TRUSTSTACK_ENGINE_PATH') ?: base_path('../python/truststack_forensics.py'),
     ],
 
 ];
