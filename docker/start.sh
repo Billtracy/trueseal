@@ -5,7 +5,7 @@ chown -R www-data:www-data /var/www/html/web/storage /var/www/html/web/bootstrap
 
 # Run Laravel migrations (force for production/container)
 cd /var/www/html/web
-php artisan migrate --force
+php artisan migrate --force --seed
 
 # Ensure database permissions are still correct after migration
 chown -R www-data:www-data /var/www/html/web/database
