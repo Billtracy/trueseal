@@ -20,12 +20,12 @@ it('protects the dashboard behind demo auth', function () {
 
 it('logs in the HR manager', function () {
     User::factory()->create([
-        'email' => 'hr@trueseal.test',
+        'email' => 'hr@truststack.test',
         'password' => 'password',
     ]);
 
     $this->post('/login', [
-        'email' => 'hr@trueseal.test',
+        'email' => 'hr@truststack.test',
         'password' => 'password',
     ])->assertRedirect('/dashboard');
 
@@ -39,7 +39,7 @@ it('creates a verification and waits for payment before scanning', function () {
     $institution = Institution::create([
         'name' => 'University of Lagos',
         'code' => 'UNILAG',
-        'squad_subaccount_id' => 'SQD_SUB_UNILAG_DEMO',
+        'opay_subaccount_id' => 'SQD_SUB_UNILAG_DEMO',
     ]);
 
     $this->actingAs($user)
@@ -59,13 +59,13 @@ it('creates a verification and waits for payment before scanning', function () {
 
 it('completes mock payment, records royalty, and runs the scan', function () {
     Storage::fake('local');
-    config(['services.squad.secret_key' => null]);
+    config(['services.opay.secret_key' => null]);
 
     $user = User::factory()->create();
     $institution = Institution::create([
         'name' => 'University of Lagos',
         'code' => 'UNILAG',
-        'squad_subaccount_id' => 'SQD_SUB_UNILAG_DEMO',
+        'opay_subaccount_id' => 'SQD_SUB_UNILAG_DEMO',
     ]);
 
     $this->actingAs($user)

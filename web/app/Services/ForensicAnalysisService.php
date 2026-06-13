@@ -24,8 +24,8 @@ class ForensicAnalysisService
         }
 
         $process = new Process([
-            config('services.trueseal.python_bin'),
-            config('services.trueseal.engine_path'),
+            config('services.truststack.python_bin'),
+            config('services.truststack.engine_path'),
             '--input',
             $inputPath,
             '--output-dir',

@@ -1,7 +1,7 @@
-<x-layouts.app title="TrueSeal Payment">
+<x-layouts.app title="TrustStack Payment">
     <div class="mx-auto max-w-3xl">
         <div class="mb-8">
-            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-squad-crimson">Squad checkout</p>
+            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-opay-mint">Payment options</p>
             <h1 class="mt-2 text-3xl font-semibold text-white">Forensic verification fee</h1>
             <p class="mt-2 text-sm leading-6 text-slate-400">Payment unlocks the scan and records the university royalty ledger entry.</p>
         </div>
@@ -43,30 +43,32 @@
                     <div class="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-cyan-400/20 text-xs text-cyan-200">₦</div>
                     <div class="text-sm text-cyan-100/80">
                         <p class="font-semibold text-cyan-100">Automated royalty routing</p>
-                        <p class="mt-1">Upon payment, <span class="font-semibold text-white">{{ $feeSplit->formatNaira($payment->royalty_amount_kobo) }}</span> is automatically transferred to <span class="font-semibold text-white">{{ $verification->institution->name }}</span>'s bank account via Squad Transfer API.</p>
+                        <p class="mt-1">Upon payment, <span class="font-semibold text-white">{{ $feeSplit->formatNaira($payment->royalty_amount_kobo) }}</span> is automatically transferred to <span class="font-semibold text-white">{{ $verification->institution->name }}</span>'s bank account via OPay Transfer API.</p>
                     </div>
                 </div>
             </div>
 
             @if ($payment->provider === 'mock')
                 <div class="mt-6 rounded-lg border border-amber-300/30 bg-amber-300/10 p-4 text-sm text-amber-100">
-                    Squad sandbox credentials are not configured or checkout initiation failed, so this demo is using the mock payment fallback.
+                    OPay sandbox credentials are not configured or checkout initiation failed, so this demo is using the mock payment fallback.
                 </div>
             @endif
 
             <div class="mt-6 flex flex-col gap-3 sm:flex-row">
-                @if ($payment->provider === 'squad' && $squadPublicKey)
-                    {{-- Inline Squad Payment Modal --}}
-                    <button id="squad-pay-btn" class="inline-flex flex-1 items-center justify-center rounded-md bg-squad-crimson px-4 py-3 text-sm font-semibold text-white transition hover:bg-squad-crimson/85">
-                        Pay with Squad
-                    </button>
-                    {{-- Fallback redirect --}}
-                    <a href="{{ $payment->checkout_url }}" class="inline-flex items-center justify-center rounded-md border border-white/10 px-4 py-3 text-sm text-slate-300 hover:border-white/20">
-                        Open checkout page instead
-                    </a>
+                @if ($payment->provider === 'opay' && $opayPublicKey)
+                    <div class="flex w-full flex-col gap-3">
+                        <button id="opay-pay-btn" class="inline-flex w-full items-center justify-center rounded-md bg-[#00C3C3] px-4 py-3 text-sm font-semibold text-white transition hover:bg-[#00aab3]">
+                            Pay with OPay
+                        </button>
+                        <div class="flex gap-3">
+                            <button id="opay-pay-btn" class="inline-flex flex-1 items-center justify-center rounded-md bg-opay-mint px-4 py-3 text-sm font-semibold text-white transition hover:bg-opay-mint/85">
+                                Pay with OPay
+                            </button>
+                        </div>
+                    </div>
                 @else
-                    <a href="{{ $payment->checkout_url }}" class="inline-flex flex-1 items-center justify-center rounded-md bg-squad-crimson px-4 py-3 text-sm font-semibold text-white transition hover:bg-squad-crimson/85">
-                        {{ $payment->provider === 'mock' ? 'Complete mock payment' : 'Open Squad checkout' }}
+                    <a href="{{ $payment->checkout_url }}" class="inline-flex flex-1 items-center justify-center rounded-md bg-opay-mint px-4 py-3 text-sm font-semibold text-white transition hover:bg-opay-mint/85">
+                        {{ $payment->provider === 'mock' ? 'Complete mock payment' : 'Open Payment options' }}
                     </a>
                 @endif
                 <a href="{{ route('dashboard') }}" class="inline-flex items-center justify-center rounded-md border border-white/10 px-4 py-3 text-sm text-slate-300 hover:border-white/20">Return to dashboard</a>
@@ -74,15 +76,19 @@
         </section>
     </div>
 
-    @if ($payment->provider === 'squad' && $squadPublicKey)
-        <script src="https://checkout.squadco.com/widget/squad.min.js"></script>
+    @if ($payment->provider === 'opay' && $opayPublicKey)
+        <script src="https://checkout.opayco.com/widget/opay.min.js"></script>
         <script>
-            document.getElementById('squad-pay-btn')?.addEventListener('click', function () {
-                const squadInstance = new window.squad({
-                    onClose: () => console.log('Squad modal closed'),
-                    onLoad: () => console.log('Squad modal loaded'),
+            document.getElementById('opay-pay-btn')?.addEventListener('click', function () {
+                window.location.href = @json(route('payments.mock', $payment));
+            });
+            
+            document.getElementById('opay-pay-btn')?.addEventListener('click', function () {
+                const opayInstance = new window.opay({
+                    onClose: () => console.log('OPay modal closed'),
+                    onLoad: () => console.log('OPay modal loaded'),
                     onSuccess: () => window.location.href = @json(route('payments.callback', ['transaction_ref' => $payment->transaction_ref])),
-                    key: @json($squadPublicKey),
+                    key: @json($opayPublicKey),
                     email: @json($verification->candidate_email),
                     amount: {{ $payment->amount_kobo }},
                     currency_code: 'NGN',
@@ -93,8 +99,8 @@
                         institution: @json($verification->institution->name),
                     },
                 });
-                squadInstance.setup();
-                squadInstance.open();
+                opayInstance.setup();
+                opayInstance.open();
             });
         </script>
     @endif

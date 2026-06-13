@@ -15,7 +15,7 @@ return new class extends Migration
             $table->foreignId('payment_id')->constrained()->cascadeOnDelete();
             $table->unsignedInteger('amount_kobo');
             $table->string('status')->default('recorded');
-            $table->string('squad_reference')->nullable();
+            $table->string('opay_reference')->nullable();
             $table->json('metadata')->nullable();
             $table->timestamps();
         });

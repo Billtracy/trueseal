@@ -9,7 +9,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('royalty_ledger_entries', function (Blueprint $table) {
-            $table->string('transfer_reference')->nullable()->after('squad_reference');
+            $table->string('transfer_reference')->nullable()->after('opay_reference');
             $table->string('transfer_status')->nullable()->after('transfer_reference');
             $table->json('transfer_response')->nullable()->after('transfer_status');
         });

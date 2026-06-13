@@ -5,17 +5,17 @@ use App\Models\Payment;
 use App\Models\User;
 use App\Models\Verification;
 use App\Services\FeeSplit;
-use App\Services\SquadPaymentService;
+use App\Services\OPayPaymentService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 uses(RefreshDatabase::class);
 
-it('builds a Squad initiate payload with local royalty metadata', function () {
+it('builds a OPay initiate payload with local royalty metadata', function () {
     $user = User::factory()->create();
     $institution = Institution::create([
         'name' => 'University of Ibadan',
         'code' => 'UI',
-        'squad_subaccount_id' => 'SQD_SUB_UI_DEMO',
+        'opay_subaccount_id' => 'SQD_SUB_UI_DEMO',
     ]);
 
     $verification = Verification::create([
@@ -35,7 +35,7 @@ it('builds a Squad initiate payload with local royalty metadata', function () {
         'royalty_amount_kobo' => FeeSplit::ROYALTY_AMOUNT_KOBO,
     ]);
 
-    $payload = app(SquadPaymentService::class)->buildInitiatePayload($verification->load('institution'), $payment);
+    $payload = app(OPayPaymentService::class)->buildInitiatePayload($verification->load('institution'), $payment);
 
     expect($payload['amount'])->toBe(500000)
         ->and($payload['currency'])->toBe('NGN')

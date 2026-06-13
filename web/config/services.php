@@ -35,16 +35,16 @@ return [
         ],
     ],
 
-    'squad' => [
-        'base_url' => env('SQUAD_BASE_URL', 'https://sandbox-api-d.squadco.com'),
-        'secret_key' => env('SQUAD_SECRET_KEY'),
-        'public_key' => env('SQUAD_PUBLIC_KEY'),
-        'merchant_id' => env('SQUAD_MERCHANT_ID'),
+    'opay' => [
+        'base_url' => env('OPAY_BASE_URL', 'https://sandbox-api-d.opayco.com'),
+        'secret_key' => env('OPAY_SECRET_KEY'),
+        'public_key' => env('OPAY_PUBLIC_KEY'),
+        'merchant_id' => env('OPAY_MERCHANT_ID'),
     ],
 
-    'trueseal' => [
+    'truststack' => [
         'python_bin' => env('TRUESEAL_PYTHON_BIN', 'python3'),
-        'engine_path' => env('TRUESEAL_ENGINE_PATH') ?: base_path('../python/trueseal_forensics.py'),
+        'engine_path' => env('TRUESEAL_ENGINE_PATH') ?: base_path('../python/truststack_forensics.py'),
     ],
 
 ];

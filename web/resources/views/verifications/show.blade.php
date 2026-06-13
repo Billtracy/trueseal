@@ -1,4 +1,4 @@
-<x-layouts.app title="TrueSeal Verdict">
+<x-layouts.app title="TrustStack Verdict">
     @php
         $isFail = $verification->status === 'fail';
         $isPass = $verification->status === 'pass';
@@ -46,7 +46,7 @@
 
     <div class="mb-8 flex flex-col justify-between gap-4 lg:flex-row lg:items-end">
         <div class="animate-fade-in-up">
-            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-squad-crimson">Verification result</p>
+            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-opay-mint">Verification result</p>
             <h1 class="mt-2 text-3xl font-bold text-white">{{ $verification->candidate_name }}</h1>
             <p class="mt-2 text-sm text-slate-400">{{ $verification->institution->name }} · {{ $verification->original_filename }}</p>
         </div>
@@ -240,7 +240,7 @@
                         <div class="mt-1 rounded-lg border border-cyan-300/20 bg-cyan-300/5 p-3">
                             <div class="flex items-start gap-2">
                                 <span class="mt-0.5 text-cyan-300">⏳</span>
-                                <p class="text-xs text-cyan-100/70">Royalty transfer queued — will process automatically once the Squad Transfer API service is activated on the merchant account.</p>
+                                <p class="text-xs text-cyan-100/70">Royalty transfer queued — will process automatically once the OPay Transfer API service is activated on the merchant account.</p>
                             </div>
                         </div>
                     @endif

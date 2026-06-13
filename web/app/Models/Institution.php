@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-#[Fillable(['name', 'code', 'country', 'squad_subaccount_id', 'bank_code', 'account_number', 'account_name', 'bank_name', 'account_last4'])]
+#[Fillable(['name', 'code', 'country', 'opay_subaccount_id', 'bank_code', 'account_number', 'account_name', 'bank_name', 'account_last4'])]
 class Institution extends Model
 {
     use HasFactory;

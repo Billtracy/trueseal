@@ -1,8 +1,8 @@
-# TrueSeal — Forensic Certificate Verification with Automated Royalty Routing
+# TrustStack — Forensic Certificate Verification with Automated Royalty Routing
 
-> **Squad Hackathon 3.0 · Challenge 01: Proof of Life**
+> **OPay Innovation Challenge 2026**
 
-TrueSeal is a B2B forensic verification platform that transforms how institutional trust is managed. When an HR department needs to verify a candidate's academic credentials, TrueSeal runs AI-powered Error Level Analysis (ELA) and OCR forensic scans on the uploaded certificate — then **automatically routes a royalty payment to the issuing university's bank account** via Squad's Transfer API.
+TrustStack is a B2B forensic verification platform that transforms how institutional trust is managed. When an HR department needs to verify a candidate's academic credentials, TrustStack runs AI-powered Error Level Analysis (ELA) and OCR forensic scans on the uploaded certificate — then **automatically routes a royalty payment to the issuing university's bank account** via OPay's Transfer API.
 
 It turns fraud prevention into a revenue stream for academic institutions.
 
@@ -14,14 +14,14 @@ Certificate fraud is rampant — and current verification methods are slow, manu
 
 ## The Innovation
 
-TrueSeal solves both problems with a single payment-gated workflow:
+TrustStack solves both problems with a single payment-gated workflow:
 
-1. **HR uploads a certificate** → pays ₦5,000 via Squad Checkout
+1. **HR uploads a certificate** → pays ₦5,000 via OPay Checkout
 2. **AI engine runs forensic analysis** → ELA heatmap + OCR + alignment detection
-3. **₦1,000 royalty auto-routes** → transferred to the university's bank via Squad Transfer API
+3. **₦1,000 royalty auto-routes** → transferred to the university's bank via OPay Transfer API
 4. **Verdict rendered** → PASS or FAIL with visual evidence
 
-The university earns passive income. The employer gets instant trust verification. Squad powers the entire financial pipeline.
+The university earns passive income. The employer gets instant trust verification. OPay & OPay power the financial pipeline.
 
 ---
 
@@ -29,9 +29,9 @@ The university earns passive income. The employer gets instant trust verificatio
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│                        TrueSeal Platform                        │
+│                        TrustStack Platform                        │
 ├──────────────────┬──────────────────┬───────────────────────────┤
-│   Laravel 13     │   Python Engine  │      Squad API Suite      │
+│   Laravel 13     │   Python Engine  │      OPay API Suite      │
 │                  │                  │                           │
 │  • Auth + RBAC   │  • ELA Analysis  │  • Initiate Payment       │
 │  • Payment Flow  │  • OCR (Tesser.) │  • Verify Transaction     │
@@ -41,7 +41,7 @@ The university earns passive income. The employer gets instant trust verificatio
 └──────────────────┴──────────────────┴───────────────────────────┘
 ```
 
-### Squad API Integration (4 Endpoints)
+### OPay API Integration (4 Endpoints)
 
 | API | Purpose | Endpoint |
 |-----|---------|----------|
@@ -55,10 +55,10 @@ The university earns passive income. The employer gets instant trust verificatio
 ```
 ₦5,000 Payment
     │
-    ├── ₦4,000 → TrueSeal (platform fee)
+    ├── ₦4,000 → TrustStack (platform fee)
     │
     └── ₦1,000 → University Bank Account
-                  (via Squad Transfer API)
+                  (via OPay Transfer API)
                   Transfer ref: {MERCHANT_ID}_ROYALTY_{ledger_id}_{random}
 ```
 
@@ -80,10 +80,10 @@ The four scores are combined into a **composite score** (0–100). The engine ou
 | Component | Technology | Version |
 |-----------|-----------|---------|
 | Backend | Laravel (PHP) | 13.8 |
-| Frontend | Blade + Tailwind CSS (Squadco Brand Identity) | 4.x |
+| Frontend | Blade + Tailwind CSS (OPay Brand Identity) | 4.x |
 | AI Engine | Python + Pillow + NumPy | 3.12 |
 | OCR | Tesseract OCR + pytesseract | 5.3.4 |
-| Payments | Squad API (Sandbox) | v1 |
+| Payments | OPay API (Sandbox) | v1 |
 | Database | SQLite | 3.x |
 | Build | Vite | 6.x |
 
@@ -97,7 +97,7 @@ Hackathon/
 │   ├── app/
 │   │   ├── Http/Controllers/
 │   │   │   ├── PaymentController.php       # Payment initiation + callback
-│   │   │   ├── SquadWebhookController.php  # HMAC-validated webhook handler
+│   │   │   ├── OPayWebhookController.php  # HMAC-validated webhook handler
 │   │   │   ├── VerificationController.php  # Upload + results
 │   │   │   └── DashboardController.php     # Stats + listing
 │   │   ├── Models/
@@ -106,7 +106,7 @@ Hackathon/
 │   │   │   ├── Institution.php             # University registry
 │   │   │   └── RoyaltyLedgerEntry.php      # Royalty transfer audit trail
 │   │   └── Services/
-│   │       ├── SquadPaymentService.php      # 6 methods across 4 Squad APIs
+│   │       ├── OPayPaymentService.php      # 6 methods across 4 OPay APIs
 │   │       ├── ForensicAnalysisService.php  # Orchestrates Python engine
 │   │       └── FeeSplit.php                 # Static fee allocation logic
 │   ├── resources/views/
@@ -115,13 +115,13 @@ Hackathon/
 │   │   ├── verifications/
 │   │   │   ├── create.blade.php             # Drag-and-drop upload
 │   │   │   └── show.blade.php               # Verdict + heatmap + score gauge
-│   │   └── payments/show.blade.php          # Squad inline modal + fee breakdown
+│   │   └── payments/show.blade.php          # OPay inline modal + fee breakdown
 │   └── database/
 │       ├── migrations/                      # 6 migration files
-│       └── seeders/DatabaseSeeder.php       # 4 universities + Squad sub-merchant registration
+│       └── seeders/DatabaseSeeder.php       # 4 universities + OPay sub-merchant registration
 │
 ├── python/                            # Forensic AI engine
-│   ├── trueseal_forensics.py          # Two-layer analysis (ELA + OCR)
+│   ├── truststack_forensics.py          # Two-layer analysis (ELA + OCR)
 │   ├── generate_test_certs.py         # Test dataset generator (80 certificates)
 │   ├── requirements.txt
 │   └── .venv/                         # Python virtual environment
@@ -155,7 +155,7 @@ git clone <repo-url> && cd Hackathon
 cd web
 composer install
 npm install
-cp .env.example .env    # then configure Squad keys (see below)
+cp .env.example .env    # then configure OPay keys (see below)
 php artisan key:generate
 
 # Python dependencies
@@ -173,10 +173,10 @@ sudo apt install tesseract-ocr    # Ubuntu/Debian
 Edit `web/.env`:
 
 ```env
-SQUAD_BASE_URL=https://sandbox-api-d.squadco.com
-SQUAD_PUBLIC_KEY=sandbox_pk_...
-SQUAD_SECRET_KEY=sandbox_sk_...
-SQUAD_MERCHANT_ID=SBL7D5D4VL
+OPAY_BASE_URL=https://sandbox-api-d.opayco.com
+OPAY_PUBLIC_KEY=sandbox_pk_...
+OPAY_SECRET_KEY=sandbox_sk_...
+OPAY_MERCHANT_ID=SBL7D5D4VL
 TRUESEAL_PYTHON_BIN=/absolute/path/to/python/.venv/bin/python3
 ```
 
@@ -187,7 +187,7 @@ cd web
 php artisan migrate --seed
 ```
 
-This creates the SQLite database, seeds 4 Nigerian universities with bank details, and **registers each as a Squad sub-merchant** via the API.
+This creates the SQLite database, seeds 4 Nigerian universities with bank details, and **registers each as a OPay sub-merchant** via the API.
 
 ### 4. Build & Run
 
@@ -214,7 +214,7 @@ Generates **80 certificates** (40 clean + 40 forged) across all 4 universities w
 
 | Field | Value |
 |-------|-------|
-| Email | `hr@trueseal.test` |
+| Email | `hr@truststack.test` |
 | Password | `password` |
 
 ### Test Case 1: Clean Certificate (Expected: PASS)
@@ -223,7 +223,7 @@ Generates **80 certificates** (40 clean + 40 forged) across all 4 universities w
 2. Select **University of Lagos** as the issuing university
 3. Enter candidate name: `Emeka Oluwaseun Oni`
 4. Upload `test_images/unilag/clean/unilag_clean_01.jpg`
-5. Click **"Continue to payment"** → complete Squad checkout
+5. Click **"Continue to payment"** → complete OPay checkout
 6. View result: **PASS** with low score, uniform heatmap
 
 ### Test Case 2: Forged Certificate (Expected: FAIL)
@@ -232,7 +232,7 @@ Generates **80 certificates** (40 clean + 40 forged) across all 4 universities w
 2. Select **University of Lagos** as the issuing university
 3. Enter candidate name: `Adebayo Adaeze Eze`
 4. Upload `test_images/unilag/forged/unilag_forged_01.jpg`
-5. Click **"Continue to payment"** → complete Squad checkout
+5. Click **"Continue to payment"** → complete OPay checkout
 6. View result: **FAIL** with high score, red hotspots on name/date regions
 
 ### What to Look For
@@ -247,9 +247,9 @@ Generates **80 certificates** (40 clean + 40 forged) across all 4 universities w
 
 ## Webhook Integration
 
-TrueSeal listens for Squad payment webhooks at `POST /payments/webhook`.
+TrustStack listens for OPay payment webhooks at `POST /payments/webhook`.
 
-**Security**: Every incoming webhook is validated with HMAC SHA-512 signature verification using the Squad secret key. The signature is read from the `x-squad-encrypted-body` header.
+**Security**: Every incoming webhook is validated with HMAC SHA-512 signature verification using the OPay secret key. The signature is read from the `x-opay-encrypted-body` header.
 
 **Flow on `charge_successful`**:
 1. Validate HMAC signature
@@ -257,9 +257,9 @@ TrueSeal listens for Squad payment webhooks at `POST /payments/webhook`.
 3. Mark payment as `paid`
 4. Create royalty ledger entry
 5. Trigger forensic scan
-6. Initiate royalty transfer via Squad Transfer API
+6. Initiate royalty transfer via OPay Transfer API
 
-To configure in Squad Dashboard:
+To configure in OPay Dashboard:
 - Set webhook URL to `https://yourdomain.com/payments/webhook`
 
 ---
@@ -271,10 +271,10 @@ Every payment creates an auditable `RoyaltyLedgerEntry` that tracks:
 | Field | Description |
 |-------|-------------|
 | `amount_kobo` | ₦1,000 (100000 kobo) per verification |
-| `squad_reference` | Original payment transaction reference |
-| `transfer_reference` | Squad Transfer API reference (`{MERCHANT_ID}_ROYALTY_{id}_{random}`) |
+| `opay_reference` | Original payment transaction reference |
+| `transfer_reference` | OPay Transfer API reference (`{MERCHANT_ID}_ROYALTY_{id}_{random}`) |
 | `transfer_status` | `recorded` → `initiated` → `success` |
-| `transfer_response` | Full Squad Transfer API JSON response |
+| `transfer_response` | Full OPay Transfer API JSON response |
 
 This creates a **complete audit trail** proving that every royalty payment was actually transferred to the university's bank account.
 
@@ -287,22 +287,12 @@ This creates a **complete audit trail** proving that every royalty payment was a
 |-----------|--------|
 | Transfer API banks | Sandbox transfers are limited to **GTBank (000013)** — demo universities use this code |
 | Transfer API access | Sandbox merchants are not profiled for Payouts (returns 400). Transfers are marked as **queued** (cyan) instead of failed. |
-| Payment amounts | Sandbox accepts test card numbers from Squad documentation |
+| Payment amounts | Sandbox accepts test card numbers from OPay documentation |
 | Sub-merchant registration | All 4 universities are auto-registered during `db:seed` |
 | Webhook testing | Use [ngrok](https://ngrok.com) or [Hookdeck](https://hookdeck.com) to expose localhost |
 
 ---
 
-## Team
-
-- **Bamigbade Emmanuel Oluwaferanmi** — Software Engineer & Law Student
-- **Adegboye Habeebulah Temitope** — UI/UX Designer & Law Student
-
-Built for **Squad Hackathon 3.0** — Challenge 01: "Proof of Life"
-
-A print-ready A4 one-pager detailing the project is included in the repository as `TrueSeal — One-Pager.pdf`.
-
----
 
 ## License
 

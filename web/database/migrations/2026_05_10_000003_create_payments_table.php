@@ -11,7 +11,7 @@ return new class extends Migration
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
             $table->foreignId('verification_id')->constrained()->cascadeOnDelete();
-            $table->string('provider')->default('squad');
+            $table->string('provider')->default('opay');
             $table->string('transaction_ref')->unique();
             $table->string('checkout_url')->nullable();
             $table->string('status')->default('pending');

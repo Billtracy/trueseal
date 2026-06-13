@@ -9,17 +9,17 @@
     --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 
-    /* ── Squadco Brand Colors ──────────────────── */
-    --color-squad-crimson: #E51E56;
-    --color-squad-aqua: #0B3142;
-    --color-squad-teal: #008488;
-    --color-squad-slate: #2D4875;
-    --color-squad-rose: #AA233C;
-    --color-squad-sage: #3F826D;
+    /* ── OPay Brand Colors ──────────────────── */
+    --color-opay-mint: #20df9e;
+    --color-opay-dark: #210F60;
+    --color-opay-teal: #00aab3;
+    --color-opay-slate: #2D4875;
+    --color-opay-rose: #00C3C3;
+    --color-opay-sage: #3F826D;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   TrueSeal Design System — Animations & Utilities
+   TrustStack Design System — Animations & Utilities
    ═══════════════════════════════════════════════════════════════════════════ */
 
 /* Fade-in-up entrance animation */

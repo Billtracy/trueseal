@@ -1,8 +1,8 @@
 <?php
 
 it('emits JSON and creates a heatmap image', function () {
-    $input = tempnam(sys_get_temp_dir(), 'trueseal-input-').'.jpg';
-    $outputDir = sys_get_temp_dir().'/trueseal-heatmaps-'.uniqid();
+    $input = tempnam(sys_get_temp_dir(), 'truststack-input-').'.jpg';
+    $outputDir = sys_get_temp_dir().'/truststack-heatmaps-'.uniqid();
 
     $image = imagecreatetruecolor(420, 280);
     $background = imagecolorallocate($image, 245, 245, 240);
@@ -14,7 +14,7 @@ it('emits JSON and creates a heatmap image', function () {
 
     $process = new Symfony\Component\Process\Process([
         'python3',
-        dirname(__DIR__, 3).'/python/trueseal_forensics.py',
+        dirname(__DIR__, 3).'/python/truststack_forensics.py',
         '--input',
         $input,
         '--output-dir',

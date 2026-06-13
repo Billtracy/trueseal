@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
     'payment_id',
     'amount_kobo',
     'status',
-    'squad_reference',
+    'opay_reference',
     'transfer_reference',
     'transfer_status',
     'transfer_response',

@@ -23,7 +23,7 @@ class AuthController extends Controller
 
         if (! Auth::attempt($credentials, $request->boolean('remember'))) {
             return back()
-                ->withErrors(['email' => 'The provided credentials do not match TrueSeal access records.'])
+                ->withErrors(['email' => 'The provided credentials do not match TrustStack access records.'])
                 ->onlyInput('email');
         }
 

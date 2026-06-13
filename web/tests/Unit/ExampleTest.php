@@ -2,7 +2,7 @@
 
 use App\Services\FeeSplit;
 
-it('calculates the TrueSeal fee split', function () {
+it('calculates the TrustStack fee split', function () {
     $split = new FeeSplit();
 
     expect($split->amounts())->toBe([

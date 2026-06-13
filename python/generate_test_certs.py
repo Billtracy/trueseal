@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Generate a full test dataset of certificate images for TrueSeal demo.
+Generate a full test dataset of certificate images for TrustStack demo.
 
 Produces 10 clean + 10 forged certificates for each of the 4 seeded universities.
 Total: 80 certificates (40 clean, 40 forged).
@@ -192,7 +192,7 @@ def forge_certificate(img: Image.Image, uni: dict, forged_name: str, forged_year
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Generate test certificate dataset for TrueSeal")
+    parser = argparse.ArgumentParser(description="Generate test certificate dataset for TrustStack")
     parser.add_argument("--output-dir", default="./test_images", help="Output directory")
     args = parser.parse_args()
 

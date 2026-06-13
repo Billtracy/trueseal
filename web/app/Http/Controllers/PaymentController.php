@@ -7,7 +7,7 @@ use App\Models\RoyaltyLedgerEntry;
 use App\Models\Verification;
 use App\Services\FeeSplit;
 use App\Services\ForensicAnalysisService;
-use App\Services\SquadPaymentService;
+use App\Services\OPayPaymentService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -19,7 +19,7 @@ class PaymentController extends Controller
     public function initiate(
         Verification $verification,
         FeeSplit $feeSplit,
-        SquadPaymentService $squadPaymentService
+        OPayPaymentService $opayPaymentService
     ): View|RedirectResponse {
         abort_unless(auth()->id() === $verification->user_id, 403);
 
@@ -29,32 +29,32 @@ class PaymentController extends Controller
 
         $payment = $verification->payment ?: $verification->payment()->create([
             ...$feeSplit->amounts(),
-            'provider' => 'squad',
+            'provider' => 'opay',
             'transaction_ref' => $this->makeTransactionRef(),
             'status' => Payment::STATUS_PENDING,
             'currency' => 'NGN',
         ]);
 
         $mockReason = null;
-        $squadResult = null;
+        $opayResult = null;
 
         try {
-            $squadResult = $squadPaymentService->initiate($verification->load('institution'), $payment);
+            $opayResult = $opayPaymentService->initiate($verification->load('institution'), $payment);
         } catch (Throwable $exception) {
             $mockReason = $exception->getMessage();
         }
 
-        if ($squadResult) {
+        if ($opayResult) {
             $payment->update([
-                'provider' => 'squad',
-                'checkout_url' => $squadResult['checkout_url'],
-                'raw_response' => $squadResult['raw_response'],
+                'provider' => 'opay',
+                'checkout_url' => $opayResult['checkout_url'],
+                'raw_response' => $opayResult['raw_response'],
             ]);
         } else {
             $payment->update([
                 'provider' => 'mock',
                 'checkout_url' => route('payments.mock', $payment),
-                'raw_response' => ['fallback_reason' => $mockReason ?: 'Squad credentials unavailable or checkout initiation failed.'],
+                'raw_response' => ['fallback_reason' => $mockReason ?: 'OPay credentials unavailable or checkout initiation failed.'],
             ]);
         }
 
@@ -62,40 +62,40 @@ class PaymentController extends Controller
             'verification' => $verification->refresh()->load('institution'),
             'payment' => $payment->refresh(),
             'feeSplit' => $feeSplit,
-            'squadPublicKey' => config('services.squad.public_key'),
+            'opayPublicKey' => config('services.opay.public_key'),
         ]);
     }
 
-    public function mock(Payment $payment, ForensicAnalysisService $forensicAnalysisService, SquadPaymentService $squadPaymentService): RedirectResponse
+    public function mock(Payment $payment, ForensicAnalysisService $forensicAnalysisService, OPayPaymentService $opayPaymentService): RedirectResponse
     {
         abort_unless(auth()->id() === $payment->verification->user_id, 403);
 
-        $this->completePayment($payment, $forensicAnalysisService, $squadPaymentService, 'mock_checkout_success');
+        $this->completePayment($payment, $forensicAnalysisService, $opayPaymentService, 'mock_checkout_success');
 
         return redirect()->route('verifications.show', $payment->verification)
             ->with('status', 'Mock payment completed and forensic scan finished.');
     }
 
-    public function callback(Request $request, ForensicAnalysisService $forensicAnalysisService, SquadPaymentService $squadPaymentService): RedirectResponse
+    public function callback(Request $request, ForensicAnalysisService $forensicAnalysisService, OPayPaymentService $opayPaymentService): RedirectResponse
     {
         $payment = Payment::where('transaction_ref', $request->query('transaction_ref'))->firstOrFail();
 
-        // Verify the transaction with Squad before trusting the callback
-        if ($payment->provider === 'squad') {
-            $verification = $squadPaymentService->verifyTransaction($payment->transaction_ref);
+        // Verify the transaction with OPay before trusting the callback
+        if ($payment->provider === 'opay') {
+            $verification = $opayPaymentService->verifyTransaction($payment->transaction_ref);
             if ($verification && strtolower((string) data_get($verification, 'transaction_status')) !== 'success') {
                 return redirect()->route('verifications.show', $payment->verification)
                     ->with('status', 'Payment verification failed. Please try again.');
             }
         }
 
-        $this->completePayment($payment, $forensicAnalysisService, $squadPaymentService, 'squad_callback');
+        $this->completePayment($payment, $forensicAnalysisService, $opayPaymentService, 'opay_callback');
 
         return redirect()->route('verifications.show', $payment->verification)
             ->with('status', 'Payment completed successfully. Forensic scan finished.');
     }
 
-    private function completePayment(Payment $payment, ForensicAnalysisService $forensicAnalysisService, SquadPaymentService $squadPaymentService, string $source): void
+    private function completePayment(Payment $payment, ForensicAnalysisService $forensicAnalysisService, OPayPaymentService $opayPaymentService, string $source): void
     {
         if ($payment->status !== Payment::STATUS_PAID) {
             $payment->update([
@@ -110,16 +110,16 @@ class PaymentController extends Controller
                     'institution_id' => $payment->verification->institution_id,
                     'amount_kobo' => $payment->royalty_amount_kobo,
                     'status' => 'recorded',
-                    'squad_reference' => $payment->transaction_ref,
+                    'opay_reference' => $payment->transaction_ref,
                     'metadata' => [
                         'source' => $source,
-                        'split_strategy' => 'squad_transfer_api',
+                        'split_strategy' => 'opay_transfer_api',
                     ],
                 ]
             );
 
-            // Attempt to initiate the royalty transfer via Squad Transfer API
-            $squadPaymentService->initiateTransfer($royalty);
+            // Attempt to initiate the royalty transfer via OPay Transfer API
+            $opayPaymentService->initiateTransfer($royalty);
         }
 
         if (! $payment->verification->fresh()->hasCompletedScan()) {

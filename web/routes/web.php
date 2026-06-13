@@ -3,7 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PaymentController;
-use App\Http\Controllers\SquadWebhookController;
+use App\Http\Controllers\OPayWebhookController;
 use App\Http\Controllers\VerificationController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,7 +16,7 @@ Route::middleware('guest')->group(function () {
     Route::post('/login', [AuthController::class, 'store']);
 });
 
-Route::post('/payments/webhook', SquadWebhookController::class)->name('payments.webhook');
+Route::post('/payments/webhook', OPayWebhookController::class)->name('payments.webhook');
 Route::get('/payments/callback', [PaymentController::class, 'callback'])->name('payments.callback');
 
 Route::middleware('auth')->group(function () {

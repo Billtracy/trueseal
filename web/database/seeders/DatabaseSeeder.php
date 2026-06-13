@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Institution;
 use App\Models\User;
-use App\Services\SquadPaymentService;
+use App\Services\OPayPaymentService;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -19,14 +19,14 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         User::updateOrCreate(
-            ['email' => 'hr@trueseal.test'],
+            ['email' => 'hr@truststack.test'],
             [
                 'name' => 'Amina Okafor',
                 'password' => Hash::make('password'),
             ]
         );
 
-        // Bank codes follow the NIP standard used by Squad Transfer API.
+        // Bank codes follow the NIP standard used by OPay Transfer API.
         // Using GTBank (000013) for sandbox-compatible transfer testing.
         $institutions = [
             [
@@ -74,29 +74,29 @@ class DatabaseSeeder extends Seeder
             );
         }
 
-        // Register institutions as sub-merchants with Squad
+        // Register institutions as sub-merchants with OPay
         $this->registerSubMerchants();
     }
 
     private function registerSubMerchants(): void
     {
-        $squad = app(SquadPaymentService::class);
+        $opay = app(OPayPaymentService::class);
 
-        if (! $squad->hasCredentials()) {
-            $this->command?->warn('Squad credentials not configured — skipping sub-merchant registration.');
+        if (! $opay->hasCredentials()) {
+            $this->command?->warn('OPay credentials not configured — skipping sub-merchant registration.');
 
             return;
         }
 
-        Institution::whereNull('squad_subaccount_id')
-            ->orWhere('squad_subaccount_id', 'like', 'SQD_SUB_%_DEMO')
-            ->each(function (Institution $institution) use ($squad) {
-                $accountId = $squad->createSubMerchant($institution);
+        Institution::whereNull('opay_subaccount_id')
+            ->orWhere('opay_subaccount_id', 'like', 'SQD_SUB_%_DEMO')
+            ->each(function (Institution $institution) use ($opay) {
+                $accountId = $opay->createSubMerchant($institution);
 
                 if ($accountId) {
-                    $this->command?->info("Registered {$institution->name} as Squad sub-merchant: {$accountId}");
+                    $this->command?->info("Registered {$institution->name} as OPay sub-merchant: {$accountId}");
                 } else {
-                    $this->command?->warn("Failed to register {$institution->name} with Squad.");
+                    $this->command?->warn("Failed to register {$institution->name} with OPay.");
                 }
             });
     }

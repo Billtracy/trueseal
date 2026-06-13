@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-TrueSeal Forensic Engine v3 — Four-Layer Pipeline
+TrustStack Forensic Engine v3 — Four-Layer Pipeline
   1. Visual Layer    — Error Level Analysis (ELA) + compression heatmap
   2. Textual Layer   — OCR text extraction + bounding box alignment analysis
   3. Noise Layer     — Laplacian noise consistency across image regions
@@ -489,7 +489,7 @@ def _compute_confidence(ela_s: int, ocr_s: int, noise_s: int, edge_s: int, ocr_a
 
 
 def main():
-    parser = argparse.ArgumentParser(description="TrueSeal forensic engine v3")
+    parser = argparse.ArgumentParser(description="TrustStack forensic engine v3")
     parser.add_argument("--input", required=True)
     parser.add_argument("--output-dir", required=True)
     parser.add_argument("--candidate-name", required=True)
